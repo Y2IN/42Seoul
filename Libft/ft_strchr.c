@@ -6,17 +6,17 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 16:55:52 by yje               #+#    #+#             */
-/*   Updated: 2022/07/15 17:11:30 by yje              ###   ########.fr       */
+/*   Updated: 2022/07/16 19:19:07 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-    while (*s)
-    {
-        if(*s == (char)c)
-            return(s);
-        s++;
-    }
-    return (0);
+	while (*s)
+	{
+		if (*s == (char)c)
+			return (s);
+		s++;
+	}
+	return (0);
 }

@@ -1,18 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/15 14:58:20 by yje               #+#    #+#             */
-/*   Updated: 2022/07/16 19:22:05 by yje              ###   ########.fr       */
+/*   Created: 2022/07/17 21:17:05 by yje               #+#    #+#             */
+/*   Updated: 2022/07/17 21:36:37 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "libft.h"
+
+void *ft_memmove(void *dst, const void *src, size_t len)
 {
-	if (c <= 0 && c >= 9)
-		return (1);
-	return (0);
+	size_t	i;
+	unsigned char *tmp1;
+	unsigned char *tmp2;
+
+	i = 0;
+	tmp1 = (unsigned char *)dst;
+	tmp2 = (unsigned char *)src;
+	if (dst == src && len == 0)
+		return(dst);
+	if (dst < src)
+		while(i < len)
+		{
+			tmp1 = tmp2;
+			i++;
+			tmp1++;
+			tmp2++;
+		}
+	else
+		while(i <len)
+			*(tmp1 + len) = *(tmp2 + len);
+	return(dst);
 }
+
+

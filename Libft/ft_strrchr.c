@@ -6,25 +6,24 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:10:20 by yje               #+#    #+#             */
-/*   Updated: 2022/07/15 17:32:40 by yje              ###   ########.fr       */
+/*   Updated: 2022/07/16 19:26:44 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-    
-    size_t i;
+	size_t	i;
 
-    i = ft_strlen(s);
-    while (i >= 0)
-    {
-        if(s[i] == (char)c)
-            return((char*)s + i);
-        if(i == 0)
-            break;
-        i--;
-    }
-    return (0);
+	i = ft_strlen(s);
+	while (i >= 0)
+	{
+		if (s[i] == (char)c)
+			return ((char *)s + i);
+		if (i == 0)
+			break ;
+		i--;
+	}
+	return (0);
 }

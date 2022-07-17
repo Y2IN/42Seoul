@@ -6,21 +6,21 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 15:16:27 by yje               #+#    #+#             */
-/*   Updated: 2022/07/15 16:33:07 by yje              ###   ########.fr       */
+/*   Updated: 2022/07/16 19:24:42 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-    size_t len;
-    
-    len = 0;
-    while(*s)
-    {
-        s++;
-        len++;
-    }
-    return (len);
+	size_t	len;
+
+	len = 0;
+	while (*s)
+	{
+		s++;
+		len++;
+	}
+	return (len);
 }
