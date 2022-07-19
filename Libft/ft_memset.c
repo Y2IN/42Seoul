@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 19:21:15 by yje               #+#    #+#             */
-/*   Updated: 2022/07/17 19:49:23 by yje              ###   ########.fr       */
+/*   Updated: 2022/07/19 13:39:02 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t	i;
-	unsigned char *tmp;
-	
+	size_t			i;
+	unsigned char	*tmp;
+
 	tmp = (unsigned char *)b;
 	i = 0;
 	while (i < len)
