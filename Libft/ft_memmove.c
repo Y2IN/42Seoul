@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 21:17:05 by yje               #+#    #+#             */
-/*   Updated: 2022/07/19 16:09:51 by yje              ###   ########.fr       */
+/*   Updated: 2022/07/19 16:25:20 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	tmp1 = (unsigned char *)dst;
 	tmp2 = (unsigned char *)src;
-	if (dst == src && len == 0)
+	if (dst == src || len == 0)
 		return (dst);
 	if (dst < src)
 	{
