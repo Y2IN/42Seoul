@@ -6,72 +6,56 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:05:36 by yje               #+#    #+#             */
-/*   Updated: 2022/07/22 16:06:05 by yje              ###   ########.fr       */
+/*   Updated: 2022/07/29 19:00:38 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	find_size(int n)
+static int	ft_cnt(long long n)
 {
-	int		size;
-	long	ln;
+	int	cnt;
 
-	ln = (long)n;
-	size = 0;
+	cnt = 1;
 	if (n < 0)
 	{
-		size++;
-		ln *= -1;
+		n = -n;
+		cnt++;
 	}
-	while (ln > 9)
+	while (n >= 10)
 	{
-		size++;
-		ln = ln / 10;
+		n /= 10;
+		cnt++;
 	}
-	size++;
-	return (size);
+	return (cnt);
 }
 
-char	*put_itoa(char *c, int n, int size)
+static char	*ft_put(char *str, long long n, int len)
 {
-	long	un;
-
-	un = (long)n;
-	size--;
 	if (n < 0)
 	{
-		c[0] = '-';
-		un *= -1;
-		while (size > 0)
-		{
-			c[size] = (un % 10) + '0';
-			un /= 10;
-			size--;
-		}
+		str[0] = '-';
+		n = -n;
 	}
-	else
+	while (n >= 10)
 	{
-		while (size >= 0)
-		{
-			c[size] = (un % 10) + '0';
-			un /= 10;
-			size--;
-		}
+		str[len] = (n % 10) + 48;
+		n /= 10;
+		len--;
 	}
-	return (c);
+	str[len] = n % 10 + 48;
+	return (str);
 }
 
 char	*ft_itoa(int n)
 {
-	int				size;
-	char			*c;
+	int		len;
+	char	*str;
 
-	size = find_size(n);
-	c = (char *)malloc(sizeof(char) * (size + 1));
-	if (!c)
-		return (0);
-	c = put_itoa(c, n, size);
-	c[size] = '\0';
-	return (c);
+	len = ft_cnt(n);
+	str = (char *)malloc(len + 1);
+	if (str == NULL)
+		return (NULL);
+	str[len] = 0;
+	return (ft_put(str, n, len - 1));
 }

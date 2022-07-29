@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 15:26:08 by yje               #+#    #+#             */
-/*   Updated: 2022/07/26 17:39:53 by yje              ###   ########.fr       */
+/*   Updated: 2022/07/29 18:29:03 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		j;
 
-	if (s1 == 0 || s2 == 0)
-		return (0);
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
 	i = 0;
 	j = 0;
 	copy = (char *)ft_calloc(sizeof(char), (ft_strlen(s1) + ft_strlen(s2) + 1));

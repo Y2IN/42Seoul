@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 15:07:45 by yje               #+#    #+#             */
-/*   Updated: 2022/07/22 16:30:08 by yje              ###   ########.fr       */
+/*   Updated: 2022/07/29 19:07:24 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*str;
 	int		i;
 
-	if (s == 0 || f == 0)
-		return (0);
+	if (s == NULL || f == NULL)
+		return (NULL);
 	i = 0;
 	str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (str == 0)

@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 14:55:22 by yje               #+#    #+#             */
-/*   Updated: 2022/07/22 16:21:28 by yje              ###   ########.fr       */
+/*   Updated: 2022/07/29 19:10:01 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	unsigned int	i;
 	unsigned int	j;
 
-	if (s == 0)
+	if (s == NULL)
 		return ;
-	i = 0;
-	while (s[i])
-		i++;
+	i = ft_strlen(s);
 	j = 0;
 	while (j < i)
 	{

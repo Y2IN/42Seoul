@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:49:02 by yje               #+#    #+#             */
-/*   Updated: 2022/07/26 17:39:26 by yje              ###   ########.fr       */
+/*   Updated: 2022/07/29 19:21:02 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	i;
 	size_t	j;
 
-	if (*needle == 0)
+	if (*needle == '\0')
 		return ((char *)haystack);
 	i = 0;
 	j = ft_strlen(needle);
