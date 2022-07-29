@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 18:38:10 by yje               #+#    #+#             */
-/*   Updated: 2022/07/23 17:06:28 by yje              ###   ########.fr       */
+/*   Updated: 2022/07/29 16:35:49 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*tmp;
-	t_list	*next;
+	t_list	*n_save;
 
 	tmp = *lst;
 	while (tmp != NULL)
 	{
-		next = tmp->next;
+		n_save = tmp->next;
 		ft_lstdelone(tmp, del);
-		tmp = next;
+		tmp = n_save;
 	}
 	*lst = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 20:16:06 by yje               #+#    #+#             */
-/*   Updated: 2022/07/19 13:42:44 by yje              ###   ########.fr       */
+/*   Updated: 2022/07/29 14:42:58 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,3 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	}
 	return (dst);
 }
-/*
-#include <stdio.h>
-
-int main(void)
-{
-        char src[32] = "";
-        char dest[32] = "";
- 
-        printf("%s\n", dest);
-      
-        ft_memcpy( dest, src, sizeof(src));
-        printf( "%s\n", dest);
-        
-        return 0;
-}
-*/

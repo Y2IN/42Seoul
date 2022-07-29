@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 20:51:10 by yje               #+#    #+#             */
-/*   Updated: 2022/07/19 13:44:19 by yje              ###   ########.fr       */
+/*   Updated: 2022/07/29 15:33:21 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	while (i < n)
 	{
 		if (((unsigned char *)s)[i] == (unsigned char)c)
-			return ((void *)s + i);
+			return ((void *)&s[i]);
 		i++;
 	}
 	return ((void *)0);

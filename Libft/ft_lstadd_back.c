@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 18:33:54 by yje               #+#    #+#             */
-/*   Updated: 2022/07/23 17:06:22 by yje              ###   ########.fr       */
+/*   Updated: 2022/07/29 16:41:11 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 	else if (lst == NULL || new == NULL)
 		return ;
-	while ((*lst)->next != NULL)
+	while (tmp->next != NULL)
 	{
-		*lst = (*lst)->next;
+		tmp = (tmp)->next;
 	}
-	(*lst)->next = new;
-	*lst = tmp;
+	tmp->next = new;
 }
