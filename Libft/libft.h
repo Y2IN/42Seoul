@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:27:08 by yje               #+#    #+#             */
-/*   Updated: 2022/07/23 17:47:08 by yje              ###   ########.fr       */
+/*   Updated: 2022/07/29 19:23:29 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 # define LIBFT_H
 
 # include<stdlib.h>
-# include <stddef.h>
 # include <unistd.h>
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}	t_list;
+}					t_list;
 
 int		ft_isascii(int c);
 int		ft_isalnum(int c);
