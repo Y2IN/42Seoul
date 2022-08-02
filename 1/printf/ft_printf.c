@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 16:29:41 by yje               #+#    #+#             */
-/*   Updated: 2022/08/01 17:30:55 by yje              ###   ########.fr       */
+/*   Created: 2022/08/01 17:23:24 by yje               #+#    #+#             */
+/*   Updated: 2022/08/01 17:31:37 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-#include <stdlib.h>
-#include <stdarg.h>
+int ft_printf(const char *format, ...)
+{
+	va_list ap;
 
-int ft_printf(const char *, ...);
-
-#endif
+	va_start(ap, format);
+	while(format)
+	{
+		
+	}
+}
