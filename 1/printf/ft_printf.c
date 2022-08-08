@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 17:23:24 by yje               #+#    #+#             */
-/*   Updated: 2022/08/03 13:40:30 by yje              ###   ########.fr       */
+/*   Updated: 2022/08/03 16:49:57 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,14 @@ size_t is_print(const char *format, va_list *ap)
 int ft_printf(const char *format, ...)
 {
 	va_list ap;
-	int		i;
-	char print;
-	char past_print;
+	int			i;
+	size_t		print;
+	size_t 		past_print;
 
 	i = 0;
 	print = 0;
+	if (format == NULL)
+		return (-1);
 	va_start(ap, format);
 	while(format[i])
 	{
