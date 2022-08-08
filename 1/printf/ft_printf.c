@@ -6,11 +6,24 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 17:23:24 by yje               #+#    #+#             */
-/*   Updated: 2022/08/08 17:52:17 by yje              ###   ########.fr       */
+/*   Updated: 2022/08/08 18:45:51 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	len;
+
+	len = 0;
+	while (*s)
+	{
+		s++;
+		len++;
+	}
+	return (len);
+}
 
 size_t is_print(const char *format, va_list ap)
 {
@@ -64,4 +77,4 @@ int ft_printf(const char *format, ...)
 	}
 	va_end(ap);
 	return (print);
-}	
+}

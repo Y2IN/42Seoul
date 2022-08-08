@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
-
 
 int	ft_putchar(char c)
 {
@@ -60,14 +58,15 @@ size_t ft_print_x(va_list ap, char a)
 {
 	unsigned int 	tmp;
 	size_t			print;
-	//char			*format;
 
 	print = 0;
 	tmp = (unsigned int)va_arg(ap, unsigned int);
 	if (tmp == 0)
+	{
 		write(1, "0", 1);
-	//format = ft_puthex((long long)tmp, ap);
-	print = ft_puthex((long long)tmp, a);
-	//free(format);
+		print++;
+	}
+	else
+		print = ft_puthex((long long)tmp, a);
 	return(print);
 }

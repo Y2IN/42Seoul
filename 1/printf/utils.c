@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 16:05:36 by yje               #+#    #+#             */
-/*   Updated: 2022/07/29 19:00:38 by yje              ###   ########.fr       */
+/*   Created: 2022/08/08 18:05:23 by yje               #+#    #+#             */
+/*   Updated: 2022/08/08 18:45:10 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 static int	ft_cnt(long long n)
 {
@@ -47,7 +47,7 @@ static char	*ft_put(char *str, long long n, int len)
 	return (str);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long long n)
 {
 	int		len;
 	char	*str;
@@ -58,4 +58,30 @@ char	*ft_itoa(int n)
 		return (NULL);
 	str[len] = 0;
 	return (ft_put(str, n, len - 1));
+}
+
+static void	write_nbr(long long n, int *cnt)
+{
+	char	a;
+
+	if (n >= 10)
+		write_nbr(n / 10, cnt);
+	a = n % 10 + 48;
+	write(1, &a, 1);
+	(*cnt)++;
+}
+
+int	ft_putnbr(long long n)
+{
+	int	cnt;
+
+	cnt = 0;
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		n *= -1;
+		cnt++;
+	}
+	write_nbr(n, &cnt);
+	return (cnt);
 }

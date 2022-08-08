@@ -6,12 +6,11 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 15:47:39 by yje               #+#    #+#             */
-/*   Updated: 2022/08/08 17:37:50 by yje              ###   ########.fr       */
+/*   Updated: 2022/08/08 18:49:34 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 
 size_t	ft_print_s(va_list ap)
 {
