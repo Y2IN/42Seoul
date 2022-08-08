@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:06:48 by yje               #+#    #+#             */
-/*   Updated: 2022/08/03 18:06:57 by yje              ###   ########.fr       */
+/*   Updated: 2022/08/08 16:02:54 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ size_t ft_print_u(va_list ap)
 	else
 	{
 		format = ft_itoa(tmp);
-		print = write(1, format, ft_strlen(format))
-		free(format)
+		print = write(1, format, ft_strlen(format));
+		free(format);
 	}
-	return (print)
+	return (print);
 }
