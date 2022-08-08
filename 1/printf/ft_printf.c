@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 17:23:24 by yje               #+#    #+#             */
-/*   Updated: 2022/08/08 18:45:51 by yje              ###   ########.fr       */
+/*   Updated: 2022/08/08 19:09:30 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-size_t is_print(const char *format, va_list ap)
+size_t	is_print(const char *format, va_list ap)
 {
-	size_t print;
+	size_t	print;
 
 	print = 0;
 	if (*format == 'c')
@@ -51,7 +51,7 @@ size_t is_print(const char *format, va_list ap)
 	return (print);
 }
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	int			i;
@@ -62,13 +62,13 @@ int ft_printf(const char *format, ...)
 	va_start(ap, format);
 	i = 0;
 	print = 0;
-	while(format[i])
+	while (format[i])
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			if(!format[i])
-				break;
+			if (!format[i])
+				break ;
 			print += is_print(&format[i], ap);
 		}
 		else

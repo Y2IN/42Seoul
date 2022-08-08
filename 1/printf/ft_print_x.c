@@ -18,9 +18,9 @@ int	ft_putchar(char c)
 	return (1);
 }
 
-int ch_count(unsigned long long n)
+int	ch_count(unsigned long long n)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	while (n >= 16)
@@ -28,10 +28,10 @@ int ch_count(unsigned long long n)
 		n = n / 16;
 		i++;
 	}
-	return(i);
+	return (i);
 }
 
-void putnbr_base(unsigned long long n, char *base)
+void	putnbr_base(unsigned long long n, char *base)
 {
 	if (n >= 16)
 		putnbr_base((n / 16), base);
@@ -54,9 +54,9 @@ int	ft_puthex(int i, char x)
 	return (print);
 }
 
-size_t ft_print_x(va_list ap, char a)
+size_t	ft_print_x(va_list ap, char a)
 {
-	unsigned int 	tmp;
+	unsigned int	tmp;
 	size_t			print;
 
 	print = 0;
@@ -68,5 +68,5 @@ size_t ft_print_x(va_list ap, char a)
 	}
 	else
 		print = ft_puthex((long long)tmp, a);
-	return(print);
+	return (print);
 }

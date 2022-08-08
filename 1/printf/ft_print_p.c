@@ -6,17 +6,17 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 16:32:44 by yje               #+#    #+#             */
-/*   Updated: 2022/08/08 18:49:32 by yje              ###   ########.fr       */
+/*   Updated: 2022/08/08 19:07:13 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_put_p(unsigned long long n)
+int	ft_put_p(unsigned long long n)
 {
 	char	*base;
 	int		print;
-	
+
 	base = "0123456789abcdef";
 	print = 0;
 	putnbr_base(n, base);

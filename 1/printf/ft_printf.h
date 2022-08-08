@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 16:29:41 by yje               #+#    #+#             */
-/*   Updated: 2022/08/08 18:42:15 by yje              ###   ########.fr       */
+/*   Updated: 2022/08/08 19:09:50 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,11 @@ int		ft_putchar(char c);
 int		ch_count(unsigned long long n);
 void	putnbr_base(unsigned long long n, char *base);
 int		ft_puthex(int i, char x);
-size_t 	ft_print_x(va_list ap, char a);
+size_t	ft_print_x(va_list ap, char a);
 size_t	is_print(const char *format, va_list ap);
 int		ft_printf(const char *format, ...);
 size_t	ft_strlen(const char *s);
 char	*ft_itoa(long long n);
 int		ft_putnbr(long long n);
-
 
 #endif
