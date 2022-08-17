@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 16:09:31 by yje               #+#    #+#             */
-/*   Updated: 2022/08/16 16:20:53 by yje              ###   ########.fr       */
+/*   Updated: 2022/08/18 00:10:45 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,22 @@ char	*get_next_line(int fd)
 {
 	char		*line;
 	char		*buffer;
-	static char	*backup[OPEN_MAX];
+	static char	*backup;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd >= OPEN_MAX)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	line = read_line(fd, buffer, backup[fd]);
+	line = read_line(fd, buffer, backup);
 	free(buffer);
 	buffer = NULL;
 	if (!line)
 	{
-		free(backup[fd]);
-		backup[fd] = NULL;
+		free(backup);
+		backup = NULL;
 		return (NULL);
 	}
-	backup[fd] = cut_back(line);
+	backup = cut_back(line);
 	return (line);
 }
