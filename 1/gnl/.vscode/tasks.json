@@ -7,7 +7,8 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "${fileDirname}//*bonus.c", 
+                "main.c", 
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
