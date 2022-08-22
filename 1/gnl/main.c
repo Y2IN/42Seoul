@@ -18,9 +18,8 @@ int	main(void)
 	printf("%s", temp);
 	free(temp);
 	close(fd);
-	// system("leaks a.out");
+	system("leaks a.out");
 	while(1)
 		;
 	return (0); //leaks a.out
-	// system("leaks a.out");
 }

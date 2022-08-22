@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 00:05:18 by yje               #+#    #+#             */
-/*   Updated: 2022/08/18 00:27:07 by yje              ###   ########.fr       */
+/*   Updated: 2022/08/18 18:10:31 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #  define BUFFER_SIZE 1
 # endif
 
-# define OPEN_FD_MAX 12000
+# define OPEN_FD_MAX 49152
 
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
