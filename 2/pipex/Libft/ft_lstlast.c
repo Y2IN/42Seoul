@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 18:04:19 by yje               #+#    #+#             */
-/*   Updated: 2022/07/29 16:43:07 by yje              ###   ########.fr       */
+/*   Created: 2022/07/13 15:11:25 by chanwjeo          #+#    #+#             */
+/*   Updated: 2022/09/06 18:03:01 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	if (lst == 0)
+	if (!lst)
 		return (NULL);
 	while (lst->next)
 		lst = lst->next;

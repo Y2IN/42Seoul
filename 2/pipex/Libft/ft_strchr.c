@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/15 16:55:52 by yje               #+#    #+#             */
-/*   Updated: 2022/07/29 14:53:00 by yje              ###   ########.fr       */
+/*   Created: 2022/07/09 15:15:49 by chanwjeo          #+#    #+#             */
+/*   Updated: 2022/09/06 18:03:57 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s)
+	while (*s != (unsigned char)c)
 	{
-		if (*s == (char)c)
-			return ((char *)s);
+		if (*s == '\0')
+			return (0);
 		s++;
 	}
-	if (*s == (char)c)
-		return ((char *)s);
-	return (0);
+	return ((char *)s);
 }

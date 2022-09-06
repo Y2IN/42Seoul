@@ -3,106 +3,105 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:05:50 by minsukan          #+#    #+#             */
-/*   Updated: 2022/07/29 18:49:26 by yje              ###   ########.fr       */
+/*   Created: 2022/07/11 15:25:00 by chanwjeo          #+#    #+#             */
+/*   Updated: 2022/09/06 18:03:54 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_cnt(char const *s, char c)
+int	ft_size_check(char const *str, char c)
 {
-	int		flag;
-	size_t	i;
-	size_t	cnt;
+	int	size;
+	int	i;
 
-	flag = 1;
+	size = 0;
 	i = 0;
-	cnt = 0;
-	while (s[i])
+	while (str[i])
 	{
-		if (s[i] == c)
-			flag = 1;
-		else
-		{
-			if (flag == 1)
-				cnt++;
-			flag = 0;
-		}
-		i++;
+		while (str[i] && str[i] == c)
+			i++;
+		if (str[i] != '\0')
+			size++;
+		while (str[i] && str[i] != c)
+			i++;
 	}
-	return (cnt);
+	return (size);
 }
 
-static char	*ft_strcpy(char *save, char const *s, size_t start, size_t end)
+int	ft_str_check(char const *str, char c)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (start < end)
+	while (str[i])
 	{
-		save[i] = s[start];
-		i++;
-		start++;
-	}
-	save[i] = 0;
-	return (save);
-}
-
-char	**ft_free(char **save, size_t cnt)
-{
-	size_t		i;
-
-	i = 0;
-	while (i < cnt)
-	{
-		free(save[i]);
+		if (str[i] == c)
+			return (i);
 		i++;
 	}
-	free(save);
-	return (NULL);
+	return (i);
 }
 
-static char	**ft_putstr(char **save, char const *s, char c, size_t cnt)
+void	free_arr(char **arr, int i)
 {
-	size_t	start;
-	size_t	end;
-	size_t	idx;
-
-	start = 0;
-	idx = 0;
-	while (idx < cnt)
+	while (i > 0)
 	{
-		while (s[start] == c)
-			start++;
-		end = start;
-		if (s[start] == 0)
-			break ;
-		while (s[end] != c && s[end] != 0)
-			end++;
-		save[idx] = (char *)malloc(end - start + 1);
-		if (!save[idx])
-			return (ft_free(save, idx));
-		save[idx] = ft_strcpy(save[idx], s, start, end);
-		idx++;
-		start = end;
+		free(arr[i]);
+		i--;
 	}
-	save[idx] = 0;
-	return (save);
+	free(arr);
+}
+
+char	**ft_too_many_lines(char **arr, char const *str, char c, int i)
+{
+	int	len;
+	int	j;
+
+	len = ft_str_check(str, c);
+	arr[i] = (char *)malloc(sizeof(char) * (len + 1));
+	if (!arr[i])
+	{
+		free_arr(arr, i);
+		return (0);
+	}
+	j = 0;
+	while (j < len)
+	{
+		arr[i][j] = str[j];
+		j++;
+	}
+	arr[i][j] = '\0';
+	return (arr);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**str;
-	size_t	cnt;
+	char	**split;
+	int		size;
+	int		i;
 
-	if (s == NULL)
-		return (NULL);
-	cnt = ft_cnt(s, c);
-	str = (char **)malloc(sizeof(char *) * (cnt + 1));
-	if (str == NULL)
-		return (NULL);
-	return (ft_putstr(str, s, c, cnt));
+	if (!s)
+		return (0);
+	i = 0;
+	size = ft_size_check(s, c);
+	split = (char **)malloc(sizeof(char *) * (size + 1));
+	if (!split)
+		return (0);
+	while (*s)
+	{
+		while (*s && *s == c)
+			s++;
+		if (*s)
+		{
+			split = ft_too_many_lines(split, s, c, i);
+			i++;
+		}
+		while (*s && *s != c)
+			s++;
+	}
+	split[i] = 0;
+	return (split);
 }

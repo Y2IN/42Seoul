@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 15:20:33 by yje               #+#    #+#             */
-/*   Updated: 2022/07/29 19:01:20 by yje              ###   ########.fr       */
+/*   Created: 2022/07/11 12:43:27 by chanwjeo          #+#    #+#             */
+/*   Updated: 2022/09/06 18:04:47 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	*null_return(void)
+{
+	char	*ret;
+
+	ret = malloc(sizeof(char));
+	if (!ret)
+		return (NULL);
+	ret[0] = '\0';
+	return (ret);
+}
 
 int	lencheck(char const *s, unsigned int start, size_t len)
 {
@@ -22,19 +33,19 @@ int	lencheck(char const *s, unsigned int start, size_t len)
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	char	*sub;
 	size_t	i;
 	size_t	j;
-	char	*sub;
 
 	i = 0;
 	j = 0;
-	if (s == NULL)
-		return (NULL);
+	if (!s)
+		return (0);
 	if (ft_strlen(s) < start)
-		return (ft_strdup(""));
+		return (null_return());
 	sub = (char *)malloc(sizeof(char) * (lencheck(s, start, len) + 1));
-	if (sub == NULL)
-		return (NULL);
+	if (!sub)
+		return (0);
 	while (s[i])
 	{
 		if (i >= start && j < len)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/15 16:28:20 by yje               #+#    #+#             */
-/*   Updated: 2022/07/29 14:49:50 by yje              ###   ########.fr       */
+/*   Created: 2022/07/09 12:49:22 by chanwjeo          #+#    #+#             */
+/*   Updated: 2022/09/06 18:04:13 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,23 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	i;
 	size_t	dst_len;
+	size_t	i;
+	size_t	src_len;
 
 	i = 0;
+	src_len = ft_strlen(src);
 	dst_len = ft_strlen(dst);
-	if (dstsize <= dst_len)
-		return (dstsize + ft_strlen(src));
-	while (i < dstsize - dst_len - 1 && src[i] != 0)
+	if (dstsize < dst_len + 1)
+		return (dstsize + src_len);
+	if (dstsize > dst_len + 1)
 	{
-		dst[dst_len + i] = src[i];
-		i++;
+		while (src[i] != 0 && dst_len + i < dstsize - 1)
+		{
+			dst[dst_len + i] = src[i];
+			i++;
+		}
 	}
-	dst[dst_len + i] = '\0';
-	return (dst_len + ft_strlen(src));
+	dst[dst_len + i] = 0;
+	return (dst_len + src_len);
 }

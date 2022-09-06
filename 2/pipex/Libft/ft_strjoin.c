@@ -3,40 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 15:26:08 by yje               #+#    #+#             */
-/*   Updated: 2022/07/29 18:29:03 by yje              ###   ########.fr       */
+/*   Created: 2022/07/11 13:21:06 by chanwjeo          #+#    #+#             */
+/*   Updated: 2022/09/06 18:04:10 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static void	ft_strcat(char *dest, const char *src)
+{
+	while (*dest)
+		dest++;
+	while (*src)
+		*dest++ = *src++;
+	*dest = '\0';
+}
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*copy;
-	int		i;
-	int		j;
+	size_t	s1_size;
+	size_t	s2_size;
+	size_t	size;
 
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	i = 0;
-	j = 0;
-	copy = (char *)ft_calloc(sizeof(char), (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (copy == 0)
+	if (!s1 || !s2)
 		return (0);
-	while (s1[i] != '\0')
-	{
-		copy[j] = s1[i];
-		i++;
-		j++;
-	}
-	i = 0;
-	while (s2[i] != '\0')
-	{
-		copy[j] = s2[i];
-		i++;
-		j++;
-	}
+	s1_size = ft_strlen(s1);
+	s2_size = ft_strlen(s2);
+	size = s1_size + s2_size;
+	copy = malloc(sizeof(char) * (size + 1));
+	if (!copy)
+		return (0);
+	copy[0] = '\0';
+	ft_strcat(copy, s1);
+	ft_strcat(copy + s1_size, s2);
 	return (copy);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/17 21:17:05 by yje               #+#    #+#             */
-/*   Updated: 2022/07/29 14:45:51 by yje              ###   ########.fr       */
+/*   Created: 2022/07/08 16:49:03 by chanwjeo          #+#    #+#             */
+/*   Updated: 2022/09/06 18:03:30 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,24 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*tmp1;
-	unsigned char	*tmp2;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	tmp1 = (unsigned char *)dst;
-	tmp2 = (unsigned char *)src;
 	if (dst == src || len == 0)
 		return (dst);
 	if (dst < src)
 	{
+		d = (unsigned char *)dst;
+		s = (unsigned char *)src;
 		while (len--)
-		{
-			*tmp1 = *tmp2;
-			tmp1++;
-			tmp2++;
-		}
+			*d++ = *s++;
 	}
 	else
 	{
+		d = (unsigned char *)dst + (len - 1);
+		s = (unsigned char *)src + (len - 1);
 		while (len--)
-			*(tmp1 + len) = *(tmp2 + len);
+			*d-- = *s--;
 	}
 	return (dst);
 }

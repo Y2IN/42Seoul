@@ -3,35 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/16 19:30:23 by yje               #+#    #+#             */
-/*   Updated: 2022/07/26 16:23:15 by yje              ###   ########.fr       */
+/*   Created: 2022/07/09 20:40:03 by chanwjeo          #+#    #+#             */
+/*   Updated: 2022/09/06 18:02:04 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_atoi(const char *str)
 {
-	int		i;
-	int		sign;
-	int		result;
+	int	ret;
+	int	sign;
 
-	i = 0;
+	ret = 0;
 	sign = 1;
-	result = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-')
+		sign = -1;
+	if (*str == '+' || *str == '-')
+		str++;
+	while (*str >= '0' && *str <= '9')
 	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
+		ret = ret * 10 + (*str - '0');
+		str++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result *= 10;
-		result += str[i] - '0';
-		i++;
-	}
-	return (result * sign);
+	return (sign * ret);
 }

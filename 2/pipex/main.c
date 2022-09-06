@@ -5,25 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 01:04:49 by yje               #+#    #+#             */
-/*   Updated: 2022/09/04 01:22:16 by yje              ###   ########.fr       */
+/*   Created: 2022/08/27 14:50:13 by chanwjeo          #+#    #+#             */
+/*   Updated: 2022/09/06 17:57:58 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "pipex.h"
-#include "Libft/libft.h"
-
-void	exit_err(char *msg)
-{
-	printf("%s\n", msg);
-	exit(1);
-}
+#include "libft/libft.h"
 
 void	exit_perror(char *msg, int code)
 {
 	perror(msg);
 	exit(code);
+}
+
+void	my_free(char **to_free)
+{
+	free(*to_free);
+	*to_free = NULL;
 }
 
 int	set_cmd(t_env *info, t_cmd *cmd)
@@ -58,15 +57,48 @@ void	check_commands(t_env *info)
 	i = 0;
 	while (i < 2)
 	{
-		if (info->cmd[i].slash == FALSE) //cmd[0] -> cmd1 (grep a1) , cmd[1] -> cmd2 (wc -w)
+		if (info->cmd[i].slash == FALSE)
 		{
 			if (set_cmd(info, &info->cmd[i]) == ERROR)
-				exit_err("command not found!\n");
+			{
+				perror("command not found!");
+				info->result = 127;
+				break ;
+			}
 		}
 		else
 			info->cmd[i].path = ft_strdup(info->cmd[i].cmd[0]);
 		i++;
 	}
+}
+
+char	*get_cmd_argv(char **path, char *cmd)
+{
+	int		i;
+	int		fd;
+	char	*path_cmd;
+	char	*tmp;
+
+	fd = access(cmd, X_OK);
+	if (fd != -1)
+		return (cmd);
+	path_cmd = ft_strjoin("/", cmd);
+	i = 0;
+	while (path[i])
+	{
+		tmp = ft_strjoin(path[i], path_cmd);
+		fd = access(tmp, X_OK);
+		if (fd != -1)
+		{
+			free(path_cmd);
+			return (tmp);
+		}
+		close(fd);
+		free(tmp);
+		i++;
+	}
+	free(path_cmd);
+	return (NULL);
 }
 
 char	*find_path(char **envp)
@@ -94,6 +126,64 @@ void	check_slash(t_cmd *cmd, const char *temp)
 		cmd->slash = TRUE;
 }
 
+void	awk_sed(char **argv, int i, t_env *info)
+{
+	int		j;
+	int		tmp;
+	char	**tmp_info;
+
+	j = 0;
+	info->cmd[i].cmd = ft_split(argv[i + 2], ' ');
+	while (ft_strncmp(info->cmd[i].cmd[j], "\'", 1) != 0 && \
+		ft_strncmp(info->cmd[i].cmd[j], "\"", 1) != 0 && info->cmd[i].cmd[j])
+		j++;
+	tmp = j;
+	if (info->cmd[i].cmd[j] == 0)
+		return ;
+	while (info->cmd[i].cmd[j])
+		my_free(&(info->cmd[i].cmd[++j]));
+	if (ft_strncmp(info->cmd[i].cmd[tmp], "\'", 1) == 0)
+		tmp_info = ft_split(argv[i + 2], '\'');
+	else
+		tmp_info = ft_split(argv[i + 2], '\"');
+	my_free(&(info->cmd[i].cmd[tmp]));
+	info->cmd[i].cmd[tmp] = ft_strdup(tmp_info[1]);
+	info->cmd[i].cmd[tmp + 1] = NULL;
+	tmp = 0;
+	while (tmp_info[tmp])
+		my_free(&tmp_info[tmp++]);
+	free(tmp_info);
+}
+
+void	check_cmd(t_env *info, char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (i < 2)
+	{
+		while (*(argv[i + 2]) == ' ')
+			argv[i + 2]++;
+		if (!ft_strncmp(argv[i + 2], "awk ", 4) || \
+			!ft_strncmp(argv[i + 2], "sed ", 4))
+			awk_sed(argv, i, info);
+		else
+		{
+			info->cmd[i].cmd = ft_split(argv[i + 2], ' ');
+		}
+		i++;
+	}
+	check_slash(&info->cmd[0], argv[2]);
+	check_slash(&info->cmd[1], argv[3]);
+	info->cmd[0].path = get_cmd_argv(info->path, info->cmd[0].cmd[0]);
+	info->cmd[1].path = get_cmd_argv(info->path, info->cmd[1].cmd[0]);
+	if (info->cmd[0].path == NULL || info->cmd[1].path == NULL)
+	{
+		info->result = 127;
+		perror("command not found");
+	}
+}
+
 void	parse_cmd(t_env *info, char **argv)
 {
 	char	*temp_path;
@@ -101,23 +191,16 @@ void	parse_cmd(t_env *info, char **argv)
 	info->result = 1;
 	info->infile_fd = open(argv[1], O_RDONLY);
 	if (info->infile_fd < 0)
-		exit_perror("not valid infile!", 1);
+		perror("not valid infile");
 	info->outfile_fd = open(argv[4], O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (info->outfile_fd < 0)
-		exit_perror("not valid outfile!", 1);
+		exit_perror("not valid outfile", 1);
 	info->cmd = (t_cmd *)malloc(sizeof(t_cmd) * 2);
 	if (!info->cmd)
-		exit_err("malloc error");
-	info->cmd[0].cmd = ft_split(argv[2], ' ');
-	info->cmd[1].cmd = ft_split(argv[3], ' ');
-	check_slash(&info->cmd[0], argv[2]);
-	check_slash(&info->cmd[1], argv[3]);
-	if (info->cmd[0].cmd == NULL || info->cmd[1].cmd == NULL)
-		exit_perror("command not found", 127);
+		exit_perror("malloc error", 1);
 	temp_path = find_path(info->envp);
-	if (temp_path == NULL && (info->cmd[0].slash == FALSE || info->cmd[1].slash == FALSE))
-		exit_perror("PATH error", 127);
 	info->path = ft_split(temp_path, ':');
+	check_cmd(info, argv);
 	free(temp_path);
 }
 
@@ -136,19 +219,25 @@ void	pipex(t_env *info)
 {
 	info->pid = fork();
 	if (info->pid == -1)
-		exit_err("pid error");
+		exit_perror("pid error", 1);
 	else if (info->pid == 0)
 	{
-		control_fds(info->pipe_fd[0], info->infile_fd, info->pipe_fd[1]);
-		if (execve(info->cmd[0].path, info->cmd[0].cmd, info->envp) == -1)
-			exit_perror("execve fail", info->result);
+		if (info->infile_fd != -1)
+		{
+			control_fds(info->pipe_fd[0], info->infile_fd, info->pipe_fd[1]);
+			if (execve(info->cmd[0].path, info->cmd[0].cmd, info->envp) == -1)
+				exit_perror("execve fail", info->result);
+		}
 	}
 	else
 	{
-		control_fds(info->pipe_fd[1], info->pipe_fd[0], info->outfile_fd);
-		waitpid(info->pid, NULL, WNOHANG);
-		if (execve(info->cmd[1].path, info->cmd[1].cmd, info->envp) == -1)
-			exit_perror("execve fail", info->result);
+		if (info->outfile_fd != -1)
+		{
+			control_fds(info->pipe_fd[1], info->pipe_fd[0], info->outfile_fd);
+			waitpid(info->pid, NULL, WNOHANG);
+			if (execve(info->cmd[1].path, info->cmd[1].cmd, info->envp) == -1)
+				exit_perror("execve fail", info->result);
+		}
 	}
 }
 
@@ -156,7 +245,7 @@ void	init_info(t_env *info, char **envp)
 {
 	ft_memset(info, 0, sizeof(t_env));
 	if (pipe(info->pipe_fd) == -1)
-		exit_err("pipe error");
+		exit_perror("pipe error", 1);
 	info->envp = envp;
 }
 
@@ -165,10 +254,9 @@ int	main(int argc, char **argv, char **envp)
 	t_env	info;
 
 	if (argc != 5)
-		exit_err("wrong command count!");
+		exit_perror("wrong command count!", 1);
 	init_info(&info, envp);
 	parse_cmd(&info, argv);
-	check_commands(&info);
 	pipex(&info);
 	return (0);
 }

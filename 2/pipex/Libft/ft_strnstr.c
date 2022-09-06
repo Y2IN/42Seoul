@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/15 17:49:02 by yje               #+#    #+#             */
-/*   Updated: 2022/07/29 19:21:02 by yje              ###   ########.fr       */
+/*   Created: 2022/07/09 20:07:54 by chanwjeo          #+#    #+#             */
+/*   Updated: 2022/09/06 18:04:33 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,25 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	i;
 	size_t	j;
 
+	i = 0;
+	j = 0;
 	if (*needle == '\0')
 		return ((char *)haystack);
-	i = 0;
-	j = ft_strlen(needle);
-	while (i < len && haystack[i])
+	while (i + j < len)
 	{
-		if (haystack[i] == *needle && i + j <= len)
+		if (haystack[i])
 		{
-			if (ft_strncmp(&haystack[i], needle, j) == 0)
-				return ((char *)&haystack[i]);
+			if (haystack[i + j] == needle[j])
+				j++;
+			else
+				j = 0;
+			if (!needle[j])
+				return ((char *)(haystack + i));
 		}
-		i++;
+		else
+			return (0);
+		if (j == 0)
+			i++;
 	}
-	return (NULL);
+	return (0);
 }
