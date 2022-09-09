@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:50:13 by chanwjeo          #+#    #+#             */
-/*   Updated: 2022/09/06 17:57:58 by yje              ###   ########.fr       */
+/*   Updated: 2022/09/07 16:59:27 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,9 @@ void	parse_cmd(t_env *info, char **argv)
 		exit_perror("malloc error", 1);
 	temp_path = find_path(info->envp);
 	info->path = ft_split(temp_path, ':');
+	// int i = -1;
+	// while(info->path[++i])
+	// 	printf("info->path[%d] : %s\n", i, info->path[i]);
 	check_cmd(info, argv);
 	free(temp_path);
 }
@@ -253,10 +256,14 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_env	info;
 
+	// int i = -1;
+	// while(envp[++i])
+	// 	printf("envp[%d] : %s\n", i, envp[i]);
 	if (argc != 5)
 		exit_perror("wrong command count!", 1);
 	init_info(&info, envp);
 	parse_cmd(&info, argv);
+	// system("leaks pipex");
 	pipex(&info);
 	return (0);
 }
