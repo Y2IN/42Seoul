@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:50:12 by chanwjeo          #+#    #+#             */
-/*   Updated: 2022/09/17 18:31:55 by yje              ###   ########.fr       */
+/*   Updated: 2022/09/17 20:57:45 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # define FAIL			0
 # define SUCCESS		1
 # define ERROR			2
-# define BUFFER_SIZE	42
 # define ERR_INFILE 	"Infile"
 # define ERR_OUTFILE 	"Outfile"
 # define ERR_INPUT		"Invalid number of arguments.\n"
@@ -64,7 +63,6 @@ void	check_cmd(t_env *info, char **argv);
 void	find_awk_sed(char **argv, int i, t_env *info);
 void	find_awk_sed2(t_env *info, char **tmp_info, int i, int tmp);
 char	*get_cmd_argv(char **path, char *cmd);
-
 
 /* utils.c */
 void	exit_perror(char *msg, int code);
