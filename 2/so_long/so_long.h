@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:13:24 by yje               #+#    #+#             */
-/*   Updated: 2022/09/04 23:09:50 by yje              ###   ########.fr       */
+/*   Updated: 2022/09/18 09:40:45 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <unistd.h>
+
+#include "./libft/libft.h"
+#include "./gnl/get_next_line.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1

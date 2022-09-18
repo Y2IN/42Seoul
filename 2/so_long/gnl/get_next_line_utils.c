@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 16:09:24 by yje               #+#    #+#             */
-/*   Updated: 2022/09/04 23:05:02 by yje              ###   ########.fr       */
+/*   Updated: 2022/09/17 20:59:22 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+size_t	gnl_strlen(const char *s)
 {
 	size_t	i;
 
@@ -22,7 +22,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*gnl_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	size_t	j;
@@ -48,7 +48,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (sub);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*gnl_strchr(const char *s, int c)
 {
 	while (*s != '\0')
 	{
@@ -61,14 +61,14 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_strdup(const char *s1)
+char	*gnl_strdup(const char *s1)
 {
 	char	*res;
 	size_t	len;
 	size_t	i;
 
 	i = 0;
-	len = ft_strlen(s1);
+	len = gnl_strlen(s1);
 	res = (char *)malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);
@@ -81,7 +81,7 @@ char	*ft_strdup(const char *s1)
 	return (res);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*gnl_strjoin(char const *s1, char const *s2)
 {
 	char	*res;
 	int		i;
@@ -89,7 +89,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	res = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	res = (char *)malloc(sizeof(char) * (gnl_strlen(s1) + gnl_strlen(s2) + 1));
 	if (!res)
 		return (NULL);
 	i = 0;

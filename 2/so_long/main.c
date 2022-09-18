@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:12:49 by yje               #+#    #+#             */
-/*   Updated: 2022/09/06 16:24:08 by yje              ###   ########.fr       */
+/*   Updated: 2022/09/18 09:55:24 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ int map_size_check(int fd, t_map *map)
 		free(line);
 		line = get_next_line(fd);
 		size++;
-	} //마지막까지 가면 널 반환
+	}
 	map -> height = size;
 	return (size);
 }
 
-int	first_line_check(char *line, t_map *map)
+void	first_line_check(char *line, t_map *map)
 {
 	int	width;
 	int size;
@@ -49,34 +49,52 @@ int	first_line_check(char *line, t_map *map)
 	while (width < size -1)
 	{
 		if (line[width] != '1')
-			return (-1);
+			error("map error");
 		width++;
 	}
-	// if (line[width] == '\n')
-	// {
-	// 	//개행일 때 세는 거 아닌감? ㅎㅎ
-	// 	//width로 중간 줄이 몇 줄 나오는 지 알 수 있다???????????? 난 모르겠따
-		
-	// }
-	return (0);
+	map->width = width;
+}
+
+void mlc(char *line, t_map *map)
+{
+	
+	
 }
 
 void	map_init(t_map *map)
 {
     int 	fd;
     int     map_size;
-	int		width;
+	int		i;
 	char 	*line;
-    
+
     fd = fd_check(map);
 	map_size = map_size_check(fd, map);
 	close(fd);
 	fd = fd_check(map);
-	// line = get_next_line(fd);
-	// width = first_line_check(line, map);
-	// if (width == -1)
-	// 	error("error.\n");
+	line = get_next_line(fd);
+	first_line_check(line, map);
+	i = 0;
+	while (i < map->height - 2)
+	{
+		free(line);
+		line = get_next_line(fd);
+		mlc(line, map);
+
+	}
+
 		
+}
+
+void arg_check(char *argv)
+{
+	int i;
+	
+	i = 0;
+	while (argv[i])
+		i++;
+	if (ft_strncmp(argv + i - 4, ".ber", 4) != 0)
+		error("map error\n");
 }
 
 // void    map_init(t_map *map)
@@ -92,10 +110,14 @@ void	map_init(t_map *map)
 // }
 
 
-int main()
+int main(int argc, char **argv)
 {
     t_map map;
-
+	
+	if (argc != 2)
+		error("error\n");
+	ft_memset(&map, 0, sizeof(t_map));
+	arg_check(argv[1]);
     map_init(&map);
     system("leaks a.out");
 }

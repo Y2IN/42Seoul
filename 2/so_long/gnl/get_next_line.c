@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 16:09:31 by yje               #+#    #+#             */
-/*   Updated: 2022/09/04 23:04:53 by yje              ###   ########.fr       */
+/*   Updated: 2022/09/17 20:59:43 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "get_next_line.h"
 
 static char	*read_line(int fd, char *buffer, char *backup)
 {
@@ -26,16 +26,16 @@ static char	*read_line(int fd, char *buffer, char *backup)
 			break ;
 		buffer[readsize] = '\0';
 		if (!backup)
-			backup = ft_strdup("");
+			backup = gnl_strdup("");
 		tmp = backup;
-		backup = ft_strjoin(tmp, buffer);
+		backup = gnl_strjoin(tmp, buffer);
 		if (!backup)
 			return (NULL);
 		if (backup[0] == '\0')
 			return (NULL);
 		free(tmp);
 		tmp = NULL;
-		if (ft_strchr(buffer, '\n'))
+		if (gnl_strchr(buffer, '\n'))
 			break ;
 	}
 	return (backup);
@@ -51,7 +51,7 @@ static char	*cut_back(char *backup)
 		i++;
 	if (backup[i] == '\0')
 		return (0);
-	res = ft_substr(backup, i + 1, ft_strlen(backup) - i);
+	res = gnl_substr(backup, i + 1, gnl_strlen(backup) - i);
 	if (!res)
 		return (NULL);
 	if (res[0] == '\0')
