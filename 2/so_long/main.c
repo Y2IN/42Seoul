@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:12:49 by yje               #+#    #+#             */
-/*   Updated: 2022/09/18 09:55:24 by yje              ###   ########.fr       */
+/*   Updated: 2022/09/25 23:22:27 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int map_size_check(int fd, t_map *map)
 	return (size);
 }
 
-void	first_line_check(char *line, t_map *map)
+int	first_line_check(char *line, t_map *map)
 {
 	int	width;
 	int size;
@@ -53,19 +53,42 @@ void	first_line_check(char *line, t_map *map)
 		width++;
 	}
 	map->width = width;
+	return(1);
 }
 
-void mlc(char *line, t_map *map)
+void middle_line_check(char *line, int width, t_map *map)
 {
+	int	size;
+	int i;
 	
+	size = ft_strlen(line);
+	if (size != width || line[0] != 1 || line[width-2] != 1)
+		error("map error");
+}
+
+void last_line_check(char *line, int width, t_map *map)
+{
+	int	size;
+	int	i;
 	
+	i = 0;
+	size = ft_strlen(line);
+	if (width != size)
+		error("map error");
+	while(i < size -1)
+	{
+		if(line[i] != '1')
+			break;
+		i++;
+	}
+	map->width = width;
 }
 
 void	map_init(t_map *map)
 {
     int 	fd;
     int     map_size;
-	int		i;
+	int		width;
 	char 	*line;
 
     fd = fd_check(map);
@@ -73,17 +96,16 @@ void	map_init(t_map *map)
 	close(fd);
 	fd = fd_check(map);
 	line = get_next_line(fd);
-	first_line_check(line, map);
-	i = 0;
-	while (i < map->height - 2)
+	width = first_line_check(line, map);
+	free(line);
+	while (map_size--)
 	{
-		free(line);
 		line = get_next_line(fd);
-		mlc(line, map);
-
+		middle_line_check(line, width, map);
+		free(line);
 	}
-
-		
+	line = get_next_line(fd);
+	last_line_check(line, width, map);
 }
 
 void arg_check(char *argv)
