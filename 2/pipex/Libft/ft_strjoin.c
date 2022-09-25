@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 20:52:15 by yje               #+#    #+#             */
-/*   Updated: 2022/09/17 20:52:18 by yje              ###   ########.fr       */
+/*   Updated: 2022/09/26 00:57:50 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	copy[0] = '\0';
 	ft_strcat(copy, s1);
 	ft_strcat(copy + s1_size, s2);
+	free(s1);
 	return (copy);
 }

@@ -6,11 +6,11 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 02:02:45 by yje               #+#    #+#             */
-/*   Updated: 2022/09/04 14:29:10 by yje              ###   ########.fr       */
+/*   Updated: 2022/09/25 23:40:08 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 void    error(char *msg)
 {
