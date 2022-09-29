@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:12:49 by yje               #+#    #+#             */
-/*   Updated: 2022/09/28 18:45:51 by yje              ###   ########.fr       */
+/*   Updated: 2022/09/30 00:11:06 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,14 @@ int fd_check(char *argv)
 
 int map_size_check(int fd, t_map *map)
 {
-    int	size;
-	char *line;
+    int		size;
+	char	*line;
 
+	if (fd < 0)
+		error("map error : not valid file descriptor");
 	size = 0;
 	line = get_next_line(fd);
+	map->width = ft_strlen(line) - 1;
 	while (line) 
 	{
 		free(line);
@@ -38,6 +41,8 @@ int map_size_check(int fd, t_map *map)
 	}
 	free(line);
 	map->height = size;
+	if (map -> height <= 2)
+		error("map error : not valid map size");
 	return (size - 2);
 }
 
@@ -62,13 +67,14 @@ void	first_line_check(char *line, t_map *map)
 	while (width < size -1)
 	{
 		if (line[width] != '1')
-			error("first line error");
+			error("map error : not surrounded top wall");
 		width++;
 	}
 	line_split = ft_split(line, '\n');
 	map->map_line = ft_strdup(line_split[0]);
 	free_all(line_split);
-	map->width = width;
+	if (map-> width != size - 1)
+		error("map error : map is not rectangul  1");
 }
 
 void middle_line_check(char *line, t_map *map)
@@ -79,18 +85,20 @@ void middle_line_check(char *line, t_map *map)
 
 	size = ft_strlen(line);
 	if (size - 1 != map->width || line[0] != '1' || line[size - 2] != '1')
-		error("middle line 1 error");
+		error("map error : not surrounded left or right wall");
 	i = 0;
 	while (i < size - 1)
 	{
 		if(!(line[i] == '1' || line[i] == '0' || line[i] == 'C' || \
 			line[i] == 'E' || line[i] == 'P'))
-			error("middle line 2 error");
+			error("map error : invalid component");
 		i++;
 	}
 	line_split = ft_split(line, '\n');
 	map->map_line = ft_strjoin(map->map_line, line_split[0]);
 	free_all(line_split);
+	if (map-> width != size - 1)
+		error("map error : map is not rectangul  2");
 }
 
 void last_line_check(char *line, t_map *map)
@@ -112,22 +120,24 @@ void last_line_check(char *line, t_map *map)
 	line_split = ft_split(line, '\n');
 	map->map_line = ft_strjoin(map->map_line, line_split[0]);
 	free_all(line_split);
+	if (map-> width != size - 1)
+		error("map error : map is not rectangul  3");
 }
 
 void	map_init(t_map *map, char *argv)
 {
     int 	fd;
-    int     map_size;
+    int     middle_size;
 	char 	*line;
 
     fd = fd_check(argv);
-	map_size = map_size_check(fd, map);
+	middle_size = map_size_check(fd, map);
 	close(fd);
 	fd = fd_check(argv);
 	line = get_next_line(fd);
 	first_line_check(line, map);
 	free(line);
-	while (map_size--)
+	while (middle_size--)
 	{
 		line = get_next_line(fd);
 		middle_line_check(line, map);
@@ -137,7 +147,7 @@ void	map_init(t_map *map, char *argv)
 	last_line_check(line, map);
 	free(line);
 	close(fd);
-	printf("map->map_line : %s\n", map->map_line);
+	// printf("map->map_line : %s\n", map->map_line);
 }
 
 void arg_check(char *argv)
