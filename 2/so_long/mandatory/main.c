@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:12:49 by yje               #+#    #+#             */
-/*   Updated: 2022/09/30 00:11:06 by yje              ###   ########.fr       */
+/*   Updated: 2022/09/30 15:56:18 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,9 +158,27 @@ void arg_check(char *argv)
 	while (argv[i])
 		i++;
 	if (ft_strncmp(argv + i - 4, ".ber", 4) != 0)
-		error("not vaild extension\n");
+		error("Error\n not vaild extension\n");
 }
 
+void objs(t_map *map)
+{
+	int i;
+
+	i = 0;
+	while(map->map_line[i])
+	{
+		if (map->map_line[i] == 'C')
+			map->all_items++;
+		else if (map->map_line[i] == 'E')
+			map->exits++;
+		else if (map ->map_line[i] == 'P')
+			map->start++;
+		i++;
+	}
+	if (map->all_items < 1 || map->exits < 1 || map->start != 1)
+		error("Error\n map error : objets error");
+}
 int main(int argc, char **argv)
 {
     t_map map;
@@ -170,6 +188,7 @@ int main(int argc, char **argv)
 	ft_memset(&map, 0, sizeof(t_map));
 	arg_check(argv[1]);
     map_init(&map, argv[1]);
+	objs(&map);
 	mlx_init();
     system("leaks so_long");
 }
