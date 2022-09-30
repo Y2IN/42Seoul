@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:13:24 by yje               #+#    #+#             */
-/*   Updated: 2022/09/28 18:13:41 by yje              ###   ########.fr       */
+/*   Updated: 2022/09/30 16:14:30 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ typedef struct  s_map
     int     width;
     int     height;
     char    *map_line;
+    int     all_items;
+    int     exits;
+    int     start;
+    int     c_item;
+    void    *mlx;
+    void    *window;
 }               t_map;
 
 size_t	ft_strlen(const char *s);
