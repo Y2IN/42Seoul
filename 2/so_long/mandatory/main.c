@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:12:49 by yje               #+#    #+#             */
-/*   Updated: 2022/09/30 15:56:18 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/03 01:02:49 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,23 +161,76 @@ void arg_check(char *argv)
 		error("Error\n not vaild extension\n");
 }
 
+int	press_key(int key_code, t_map *map)
+{
+	if (key_code == KEY_ESC)
+		exit_game(map);
+	if (key_code == KEY_W)
+		move_w(map);
+	if (key_code == KEY_A)
+		move_a(map);
+	if (key_code == KEY_S)
+		move_s(map);
+	if (key_code == KEY_D)
+		move_d(map);
+	setting_img(map);
+	return (0);
+}
+
+int	exit_game(t_map *game)
+{
+	mlx_destroy_window(game->mlx, game->win);
+	exit(0);
+}
+
 void objs(t_map *map)
 {
 	int i;
+	int exits;
+	int p_start;
 
 	i = 0;
+	exits = 0;
+	p_start = 0;
 	while(map->map_line[i])
 	{
 		if (map->map_line[i] == 'C')
 			map->all_items++;
 		else if (map->map_line[i] == 'E')
-			map->exits++;
+			exits++;
 		else if (map ->map_line[i] == 'P')
-			map->start++;
+			p_start++;
 		i++;
 	}
-	if (map->all_items < 1 || map->exits < 1 || map->start != 1)
+	if (map->all_items < 1 || exits < 1 || p_start != 1)
 		error("Error\n map error : objets error");
+}
+
+void setting_img(t_map *map)
+{
+	int hei;
+	int wid;
+
+	hei = 0;
+	while (hei < map->height)
+	{
+		wid = 0;
+		while (wid < map->width)
+		{
+			mlx_put_image_to_window(map->mlx, map->win, map->obj->ld, wid*64, hei*64);
+			if (map->map_line[hei * map->width + wid] == '1')
+				mlx_put_image_to_window(map->mlx, map->win, map->obj->tr, wid*64, hei*64);
+			else if (map->map_line[hei * map->width + wid] == 'C')
+				mlx_put_image_to_window(map->mlx, map->win, map->obj->it, wid*64, hei*64);
+			else if (map->map_line[hei * map->width + wid] == 'P')
+				mlx_put_image_to_window(map->mlx, map->win, map->obj->s1, wid*64 + 16, hei*64 + 16);
+			else if (map->map_line[hei * map->width + wid] == 'E')
+				mlx_put_image_to_window(map->mlx, map->win, map->obj->d1, wid*64 + 16, hei*64 + 16);
+			wid++;
+		}
+		hei++;
+	}
+	
 }
 int main(int argc, char **argv)
 {
@@ -189,6 +242,15 @@ int main(int argc, char **argv)
 	arg_check(argv[1]);
     map_init(&map, argv[1]);
 	objs(&map);
-	mlx_init();
+	printf("clear\n");
+	map.mlx = mlx_init();
+	map.win = mlx_new_window(map.mlx, map.width * 64, map.height * 64, "so_long");
+	obj_init(&map);
+	setting_img(&map);
+	mlx_hook(map.win, X_EVENT_KEY_RELEASE, 0, &press_key, &map);
+	mlx_hook(map.win, X_EVENT_KEY_EXIT, 0, &exit_game, &map);
+	mlx_loop(map.mlx);
+	return (0);
     system("leaks so_long");
 }
+

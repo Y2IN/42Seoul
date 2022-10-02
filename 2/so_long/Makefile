@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yje <yje@student.42.fr>                    +#+  +:+       +#+         #
+#    By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 18:08:10 by yje               #+#    #+#              #
-#    Updated: 2022/09/28 18:10:44 by yje              ###   ########.fr        #
+#    Updated: 2022/10/02 23:44:43 by yje              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ LFT_DIR = ./libft
 LFT_FLAG = -L$(LFT_DIR) -lft -I$(LFT_DIR)
 
 # FILES
-MPATH_SRCS	=	main.c close.c
+MPATH_SRCS	=	main.c close.c move.c obj_init.c
 MPATH_DIR	=	mandatory/
 MPATH		=	$(addprefix $(MPATH_DIR), $(MPATH_SRCS))
 OBJ_M		=	$(MPATH:.c=.o)
