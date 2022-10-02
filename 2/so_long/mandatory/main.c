@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:12:49 by yje               #+#    #+#             */
-/*   Updated: 2022/10/03 01:02:49 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/03 01:11:35 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,7 @@ int	press_key(int key_code, t_map *map)
 int	exit_game(t_map *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
+	system("leaks so_long");
 	exit(0);
 }
 
@@ -242,7 +243,6 @@ int main(int argc, char **argv)
 	arg_check(argv[1]);
     map_init(&map, argv[1]);
 	objs(&map);
-	printf("clear\n");
 	map.mlx = mlx_init();
 	map.win = mlx_new_window(map.mlx, map.width * 64, map.height * 64, "so_long");
 	obj_init(&map);
