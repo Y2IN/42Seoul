@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 16:10:50 by yje               #+#    #+#             */
-/*   Updated: 2022/10/02 22:16:45 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/02 22:22:15 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ void move_d(t_map *map)
         map->c_item++;
     if (map->map_line[i + 1] == 'E' && map->all_items == map->c_item)
         exit;
-    else if (map -> map_line[i + 1] == 0 || map -> map_line[i + 1] != 'E')
+    else if (map -> map_line[i + 1] != '1' || map -> map_line[i + 1] != 'E')
+    {
         map -> map_line[i + 1] = 'P';
         map -> map_line[i] = '0';
+    }
 }
