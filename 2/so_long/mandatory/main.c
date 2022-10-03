@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:12:49 by yje               #+#    #+#             */
-/*   Updated: 2022/10/03 01:11:35 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/03 23:21:01 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,6 @@ int	press_key(int key_code, t_map *map)
 		move_s(map);
 	if (key_code == KEY_D)
 		move_d(map);
-	setting_img(map);
 	return (0);
 }
 

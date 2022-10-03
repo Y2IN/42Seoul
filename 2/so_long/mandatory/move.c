@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 16:10:50 by yje               #+#    #+#             */
-/*   Updated: 2022/10/03 01:08:39 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/03 23:21:27 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void move_d(t_map *map)
     {
         map -> map_line[i + 1] = 'P';
         map -> map_line[i] = '0';
+        map->walk_cnt++;
+        printf("%d\n", map->walk_cnt);
+	    setting_img(map);
     }
     
 }
@@ -58,6 +61,9 @@ void move_a(t_map *map)
     {
         map -> map_line[i - 1] = 'P';
         map -> map_line[i] = '0';
+        map->walk_cnt++;
+        printf("%d\n", map->walk_cnt);
+	    setting_img(map);
     }
     
 }
@@ -83,6 +89,9 @@ void move_w(t_map *map)
     {
         map -> map_line[i - map->width] = 'P';
         map -> map_line[i] = '0';
+        map->walk_cnt++;
+        printf("%d\n", map->walk_cnt);
+	    setting_img(map);
     }
     
 }
@@ -108,6 +117,9 @@ void move_s(t_map *map)
     {
         map -> map_line[i + map->width] = 'P';
         map -> map_line[i] = '0';
+        map->walk_cnt++;
+        printf("%d\n", map->walk_cnt);
+	    setting_img(map);
     }
     
 }
