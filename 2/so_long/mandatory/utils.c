@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 15:26:08 by yje               #+#    #+#             */
-/*   Updated: 2022/10/04 20:59:24 by yje              ###   ########.fr       */
+/*   Created: 2022/10/04 20:44:43 by yje               #+#    #+#             */
+/*   Updated: 2022/10/04 21:41:47 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/so_long.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+void	free_all(char **split)
 {
-	char	*copy;
-	int		i;
-	int		j;
+	int	i;
 
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	i = 0;
-	j = 0;
-	copy = (char *)ft_calloc(sizeof(char), (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (copy == 0)
-		return (0);
-	while (s1[i] != '\0')
-	{
-		copy[i] = s1[i];
-		i++;
-	}
-	while (s2[j] != '\0')
-	{
-		copy[i + j] = s2[j];
-		j++;
-	}
-	free(s1);
-	return (copy);
+	i = -1;
+	while (split[++i])
+		free(split[i]);
+	free(split);
+}
+
+int	press_key(int key_code, t_map *map)
+{
+	if (key_code == KEY_ESC)
+		exit_game(map);
+	if (key_code == KEY_W)
+		move_w(map);
+	if (key_code == KEY_A)
+		move_a(map);
+	if (key_code == KEY_S)
+		move_s(map);
+	if (key_code == KEY_D)
+		move_d(map);
+	return (0);
 }
