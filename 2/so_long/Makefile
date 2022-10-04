@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+         #
+#    By: yje <yje@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 18:08:10 by yje               #+#    #+#              #
-#    Updated: 2022/10/02 23:44:43 by yje              ###   ########.fr        #
+#    Updated: 2022/10/04 20:23:40 by yje              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ OBJ_F		=	$(FUNC:.c=.o)
 
 $(NAME):		$(OBJ_F) $(OBJ_M)
 				@make -s -C $(LFT_DIR)
-				@make -s -C ./mlx
+				@arch -x86_64 make -s -C ./mlx all
 				@$(CC) $(LFT_FLAG) $(OBJ_F) $(OBJ_M) $(MLX) -o $(NAME)
 				@echo -e "$(GREEN)$(NAME) created!$(DEFAULT)"
 
@@ -55,6 +55,7 @@ all:			$(NAME)
 
 bonus:			fclean $(OBJ_F) $(OBJ_B)
 				@make -s -C $(LFT_DIR)
+				@make -s -C ./mlx all
 				@$(CC) $(LFT_FLAG) $(OBJ_F) $(OBJ_B) $(MLX) -o $(NAME)
 				@echo -e "$(GREEN)$(NAME) created!$(DEFAULT)"
 
