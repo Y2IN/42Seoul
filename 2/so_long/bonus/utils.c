@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 02:02:45 by yje               #+#    #+#             */
-/*   Updated: 2022/10/06 15:27:12 by yje              ###   ########.fr       */
+/*   Created: 2022/10/04 20:44:43 by yje               #+#    #+#             */
+/*   Updated: 2022/10/04 21:41:47 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	exit_game(t_map *game)
+void	free_all(char **split)
 {
-	mlx_destroy_window(game->mlx, game->win);
-	exit(0);
+	int	i;
+
+	i = -1;
+	while (split[++i])
+		free(split[i]);
+	free(split);
 }
 
-void	print_error(char *msg)
+int	press_key(int key_code, t_map *map)
 {
-	printf("ERROR : %s\n", msg);
-	exit(1);
+	if (key_code == KEY_ESC)
+		exit_game(map);
+	if (key_code == KEY_W)
+		move_w(map);
+	if (key_code == KEY_A)
+		move_a(map);
+	if (key_code == KEY_S)
+		move_s(map);
+	if (key_code == KEY_D)
+		move_d(map);
+	return (0);
 }

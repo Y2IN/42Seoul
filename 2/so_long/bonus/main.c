@@ -6,11 +6,11 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:12:49 by yje               #+#    #+#             */
-/*   Updated: 2022/10/06 15:33:06 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/06 20:37:35 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 int	fd_check(char *argv)
 {
@@ -54,6 +54,7 @@ void	objs(t_map *map)
 	}
 	if (map->all_items < 1 || exits < 1 || p_start != 1)
 		print_error("map error -> objets error");
+	map->map_size = ft_strlen(map->map_line);
 }
 
 int	main(int argc, char **argv)

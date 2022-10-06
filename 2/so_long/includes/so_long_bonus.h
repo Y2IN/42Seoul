@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:13:24 by yje               #+#    #+#             */
-/*   Updated: 2022/10/06 17:54:14 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/06 21:45:47 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_obj
 	void	*s4;
 	void	*s7;
 	void	*s10;
+	void	*t1;
 }				t_obj;
 
 typedef struct s_map
@@ -59,6 +60,7 @@ typedef struct s_map
 	int				all_items;
 	int				c_items;
 	int				walk_cnt;
+	int				map_size;
 	char			*map_line;
 	void			*mlx;
 	void			*win;
@@ -85,6 +87,7 @@ void	map_init(t_map *map, char *argv);
 
 /* mlx_utils.c */
 void	setting_img(t_map *map);
+void	put_img(t_map *map, void *obj, int w, int h);
 
 /* move.c */
 void	move_d(t_map *map);
@@ -99,4 +102,10 @@ void	obj_init(t_map *map);
 void	free_all(char **split);
 int		press_key(int key_code, t_map *map);
 
+/* move_a_bonus.c */
+void	move_a(t_map *map);
+void	setting_img_a2(t_map *map, int hei, int wid);
+void	setting_img_a(t_map *map);
+void	setting_img_a3(t_map *map, int hei, int wid);
+void	setting_img(t_map *map);
 #endif

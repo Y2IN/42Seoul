@@ -6,7 +6,7 @@
 #    By: yje <yje@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 18:08:10 by yje               #+#    #+#              #
-#    Updated: 2022/10/06 15:12:06 by yje              ###   ########.fr        #
+#    Updated: 2022/10/06 21:05:00 by yje              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,7 @@ MPATH_DIR	=	mandatory/
 MPATH		=	$(addprefix $(MPATH_DIR), $(MPATH_SRCS))
 OBJ_M		=	$(MPATH:.c=.o)
 
-BPATH_SRCS	=	main_bonus.c map_checker_bonus.c utils_bonus.c valid_utils_bonus.c mlx_utils_bonus.c init_bonus.c \
-				move_w_bonus.c move_a_bonus.c move_s_bonus.c move_d_bonus.c move_enemy_bonus.c \
-				put_char_sprite_img_bonus.c put_enm_sprite_img_bonus.c put_obj_img_bonus.c
+BPATH_SRCS	=	close_bonus.c main.c map_check.c mlx_utils.c move_a_bonus.c move.c obj_init_bonus.c utils.c
 BPATH_DIR	=	bonus/
 BPATH		=	$(addprefix $(BPATH_DIR), $(BPATH_SRCS))
 OBJ_B		=	$(BPATH:.c=.o)
@@ -46,14 +44,14 @@ OBJ_F		=	$(FUNC:.c=.o)
 				@${CC} ${CFLAGS} -c $< -o $@
 
 $(NAME):		$(OBJ_F) $(OBJ_M)
-				@make -s -C $(LFT_DIR)
+				@make -s -C $(LFT_DIR) all
 				@$(CC) $(LFT_FLAG) $(OBJ_F) $(OBJ_M) $(MLX) -o $(NAME)
 				@echo -e "$(GREEN)$(NAME) created!$(DEFAULT)"
 
 all:			$(NAME)
 
 bonus:			fclean $(OBJ_F) $(OBJ_B)
-				@make -s -C $(LFT_DIR)
+				@make -s -C $(LFT_DIR) all
 				@$(CC) $(LFT_FLAG) $(OBJ_F) $(OBJ_B) $(MLX) -o $(NAME)
 				@echo -e "$(GREEN)$(NAME) created!$(DEFAULT)"
 
