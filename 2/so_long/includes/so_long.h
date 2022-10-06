@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:13:24 by yje               #+#    #+#             */
-/*   Updated: 2022/10/04 21:43:59 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/06 15:09:00 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <limits.h>
 # include <unistd.h>
 
-# include "../mlx/mlx.h"
+# include <mlx.h>
 # include "../libft/libft.h"
 # include "../gnl/get_next_line.h"
 

@@ -6,7 +6,7 @@
 #    By: yje <yje@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 18:08:10 by yje               #+#    #+#              #
-#    Updated: 2022/10/04 20:46:21 by yje              ###   ########.fr        #
+#    Updated: 2022/10/06 15:12:06 by yje              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME		=	so_long
 CC			=	cc
 CFLAGS		=	-Wall -Werror -Wextra
 RM			=	rm -rf
-MLX			=	-L./mlx -lmlx -framework OpenGL -framework AppKit
+MLX			=  -lmlx -framework OpenGL -framework AppKit
 
 # HEADER
 HEADER_SRCS	=	so_long.h so_long_bonus.h
@@ -47,7 +47,6 @@ OBJ_F		=	$(FUNC:.c=.o)
 
 $(NAME):		$(OBJ_F) $(OBJ_M)
 				@make -s -C $(LFT_DIR)
-				@arch -x86_64 make -s -C ./mlx all
 				@$(CC) $(LFT_FLAG) $(OBJ_F) $(OBJ_M) $(MLX) -o $(NAME)
 				@echo -e "$(GREEN)$(NAME) created!$(DEFAULT)"
 
@@ -55,13 +54,11 @@ all:			$(NAME)
 
 bonus:			fclean $(OBJ_F) $(OBJ_B)
 				@make -s -C $(LFT_DIR)
-				@make -s -C ./mlx all
 				@$(CC) $(LFT_FLAG) $(OBJ_F) $(OBJ_B) $(MLX) -o $(NAME)
 				@echo -e "$(GREEN)$(NAME) created!$(DEFAULT)"
 
 clean:
 				@make -s -C $(LFT_DIR) clean
-				@make -s -C ./mlx clean
 				@$(RM) $(OBJ_M)
 				@$(RM) $(OBJ_F)
 				@$(RM) $(OBJ_B)
