@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:12:49 by yje               #+#    #+#             */
-/*   Updated: 2022/10/06 20:37:35 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/07 19:13:53 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	objs(t_map *map)
 	i = 0;
 	exits = 0;
 	p_start = 0;
+	map->x = 16;
+	map->y = 16;
 	while (map->map_line[i])
 	{
 		if (map->map_line[i] == 'C')
@@ -72,7 +74,7 @@ int	main(int argc, char **argv)
 	map.height * 64, "so_long");
 	obj_init(&map);
 	setting_img(&map);
-	mlx_hook(map.win, X_EVENT_KEY_RELEASE, 0, &press_key, &map);
+	mlx_hook(map.win, X_EVENT_KEY_PRESS, 0, &press_key, &map);
 	mlx_hook(map.win, X_EVENT_KEY_EXIT, 0, &exit_game, &map);
 	mlx_loop(map.mlx);
 	return (0);

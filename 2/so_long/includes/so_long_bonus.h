@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:13:24 by yje               #+#    #+#             */
-/*   Updated: 2022/10/06 21:45:47 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/07 18:46:58 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,6 @@ int		press_key(int key_code, t_map *map);
 void	move_a(t_map *map);
 void	setting_img_a2(t_map *map, int hei, int wid);
 void	setting_img_a(t_map *map);
-void	setting_img_a3(t_map *map, int hei, int wid);
+void	setting_img_a3(t_map *map);
 void	setting_img(t_map *map);
 #endif
