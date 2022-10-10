@@ -6,11 +6,11 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 20:37:58 by yje               #+#    #+#             */
-/*   Updated: 2022/10/06 15:31:35 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/10 12:55:45 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void	first_line_check(char *line, t_map *map)
 {

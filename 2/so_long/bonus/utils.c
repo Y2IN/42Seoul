@@ -6,11 +6,16 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 20:44:43 by yje               #+#    #+#             */
-/*   Updated: 2022/10/04 21:41:47 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/10 18:17:24 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
+
+int	create_trgb(int t, int r, int g, int b)
+{
+    return (t << 24 | r << 16 | g << 8 | b);
+}
 
 void	free_all(char **split)
 {
@@ -34,5 +39,6 @@ int	press_key(int key_code, t_map *map)
 		move_s(map);
 	if (key_code == KEY_D)
 		move_d(map);
+	move_enemy(map);
 	return (0);
 }

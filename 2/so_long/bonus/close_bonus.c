@@ -6,11 +6,11 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:37:05 by yje               #+#    #+#             */
-/*   Updated: 2022/10/06 15:37:09 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/10 12:55:52 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 int	exit_game(t_map *game)
 {

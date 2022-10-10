@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:13:24 by yje               #+#    #+#             */
-/*   Updated: 2022/10/07 18:46:58 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/10 18:09:54 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,22 @@
 # define KEY_S						1
 # define KEY_D						2
 
+typedef struct s_img
+{
+	void		*pt;
+}				t_img;
+
 typedef struct s_obj
 {
-	void	*ld;
-	void	*tr;
-	void	*it;
-	void	*d1;
-	void	*d2;
-	void	*s1;
-	void	*s4;
-	void	*s7;
-	void	*s10;
-	void	*t1;
+	t_img		item[1];
+	t_img		door[2];
+	t_img		sw[3];
+	t_img		ss[3];
+	t_img		sa[3];
+	t_img		sd[3];
+	t_img		tree[1];
+	t_img		land[1];
+	t_img		teacher[1];
 }				t_obj;
 
 typedef struct s_map
@@ -70,11 +74,10 @@ typedef struct s_map
 /* main.c */
 int		fd_check(char *argv);
 void	arg_check(char *argv);
-int		press_key(int key_code, t_map *map);
 void	objs(t_map *map);
 int		main(int argc, char **argv);
 
-/* close.c */
+/* close_bonus.c */
 int		exit_game(t_map *game);
 void	print_error(char *msg);
 
@@ -86,26 +89,50 @@ int		map_size_check(int fd, t_map *map);
 void	map_init(t_map *map, char *argv);
 
 /* mlx_utils.c */
-void	setting_img(t_map *map);
 void	put_img(t_map *map, void *obj, int w, int h);
+void	setting_img(t_map *map);
 
-/* move.c */
+/* move_d_bonus.c */
 void	move_d(t_map *map);
-void	move_a(t_map *map);
-void	move_w(t_map *map);
+void	setting_img_d2(t_map *map, int hei, int wid);
+void	put_img_rd_d(t_map *map, int w64, int h64);
+void	setting_img_d3(t_map *map);
+void	setting_img_d1(t_map *map);
+
+/* move_s_bonus.c */
 void	move_s(t_map *map);
-
-/* obj_init.c */
-void	obj_init(t_map *map);
-
-/* utils.c */
-void	free_all(char **split);
-int		press_key(int key_code, t_map *map);
+void	setting_img_s2(t_map *map, int hei, int wid);
+void	put_img_rd_s(t_map *map, int w64, int h64);
+void	setting_img_s3(t_map *map);
+void	setting_img_s1(t_map *map);
 
 /* move_a_bonus.c */
 void	move_a(t_map *map);
 void	setting_img_a2(t_map *map, int hei, int wid);
-void	setting_img_a(t_map *map);
+void	put_img_rd_a(t_map *map, int w64, int h64);
 void	setting_img_a3(t_map *map);
-void	setting_img(t_map *map);
+void	setting_img_a1(t_map *map);
+
+/* move_w_bonus.c */
+void	move_w(t_map *map);
+void	setting_img_w2(t_map *map, int hei, int wid);
+void	put_img_rd_w(t_map *map, int w64, int h64);
+void	setting_img_w3(t_map *map);
+void	setting_img_w1(t_map *map);
+
+/* obj_init.c */
+
+void	obj_move_init(t_map *map);
+void	img_init(t_map *map, t_img *img, int i, char *xpm);
+
+/* utils.c */
+int		create_trgb(int t, int r, int g, int b);
+void	free_all(char **split);
+int		press_key(int key_code, t_map *map);
+
+/* enemy_move_bonus.c */
+void	make_enemy(t_map *map);
+void	move_enemy(t_map *map);
+
+
 #endif

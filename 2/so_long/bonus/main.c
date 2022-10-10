@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:12:49 by yje               #+#    #+#             */
-/*   Updated: 2022/10/07 19:13:53 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/10 16:38:17 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ int	main(int argc, char **argv)
 	map.mlx = mlx_init();
 	map.win = mlx_new_window(map.mlx, map.width * 64, \
 	map.height * 64, "so_long");
-	obj_init(&map);
+	obj_move_init(&map);
+	make_enemy(&map);
 	setting_img(&map);
 	mlx_hook(map.win, X_EVENT_KEY_PRESS, 0, &press_key, &map);
 	mlx_hook(map.win, X_EVENT_KEY_EXIT, 0, &exit_game, &map);
