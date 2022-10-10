@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 16:10:50 by yje               #+#    #+#             */
-/*   Updated: 2022/10/04 21:40:14 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/10 20:48:08 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	move_d(t_map *map)
 		map->c_items++;
 	if (map->map_line[i + 1] == 'E' && map->all_items == map->c_items)
 		exit_game(map);
+	if (map->map_line[i + 1] == 'E' && map->all_items != map->c_items)
+		return ;
 	else if (map -> map_line[i + 1] != '1' || map -> map_line[i + 1] != 'E')
 	{
 		map->map_line[i + 1] = 'P';

@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:13:24 by yje               #+#    #+#             */
-/*   Updated: 2022/10/10 18:09:54 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/10 20:58:10 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,12 @@ int		press_key(int key_code, t_map *map);
 /* enemy_move_bonus.c */
 void	make_enemy(t_map *map);
 void	move_enemy(t_map *map);
+
+/* enemy_move2.c */
+void	enemy_move_0(t_map *map, int i);
+void	enemy_move_1(t_map *map, int i);
+void	enemy_move_2(t_map *map, int i);
+void	enemy_move_3(t_map *map, int i);
 
 
 #endif
