@@ -3,52 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   move_d_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 14:02:54 by yje               #+#    #+#             */
-/*   Updated: 2022/10/10 17:50:21 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/11 19:48:35 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
-
-void	move_d(t_map *map)
-{
-	size_t	i;
-
-	i = 0;
-	map->x = map->x + 8;
-	if (map->x >= 64)
-		map->x = 64;
-	while (i < ft_strlen(map->map_line))
-	{
-		if (map -> map_line[i] == 'P')
-			break ;
-		i++;
-	}
-	if (map->x >= 64)
-	{	
-		if (map->map_line[i + 1] == '1')
-			return ;
-		if (map->map_line[i + 1] == 'E' && map->all_items != map->c_items)
-			return ;
-		map->x = 0;
-		if (map->map_line[i + 1] == 'C')
-			map->c_items++;
-		if (map->map_line[i + 1] == 'T')
-			exit_game(map);
-		if (map->map_line[i + 1] == 'E' && map->all_items == map->c_items)
-			exit_game(map);
-		else if (map -> map_line[i + 1] != '1' || map -> map_line[i + 1] != 'E')
-		{
-			map->map_line[i + 1] = 'P';
-			map->map_line[i] = '0';
-		}
-	}
-	setting_img_d1(map);
-	map->walk_cnt++;
-}
-
 
 void	setting_img_d2(t_map *map, int hei, int wid)
 {
@@ -129,4 +91,46 @@ void	setting_img_d1(t_map *map)
 	setting_img_d3(map);
 	mlx_string_put(map->mlx, map->win, 10, 10, create_trgb(0, 255, 255, 255), walk_cnt);
 	free(walk_cnt);
+}
+
+static int	move_d2(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < map->map_size)
+		if (map->map_line[i] == 'P')
+			break ;
+	if (map->x == 48)
+		if (map->map_line[i + 1] == '1')
+			return (1);
+	if (map->x == 64)
+	{
+		if (map->map_line[i + 1] == 'T')
+			exit_game(map);
+		if (map->map_line[i + 1] == 'E' && map->c_items == map->all_items)
+			exit_game(map);
+		if (map->map_line[i + 1] == 'E' && map->c_items != map->all_items)
+			return (1);
+		map->map_line[i + 1] = 'P';
+		map->map_line[i] = '0';
+		map->x= 0;
+	}
+	return (0);
+}
+
+void	move_d(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	// map->item_cnt = 0;
+	while (i++ < map->map_size)
+		if (map->map_line[i] == 'C')
+			map->c_items++;
+	if (move_d2(map))
+		return ;
+	map->walk_cnt++;
+	move_enemy(map);
+	setting_img_d1(map);
 }

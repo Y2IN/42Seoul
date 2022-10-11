@@ -3,51 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   move_s_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 14:01:43 by yje               #+#    #+#             */
-/*   Updated: 2022/10/10 16:50:32 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/11 19:45:06 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
-
-void	move_s(t_map *map)
-{
-	size_t	i;
-
-	i = 0;
-	map->y = map->y + 8;
-	if (map->y >= 64)
-		map->y = 64;
-	while (i < ft_strlen(map->map_line))
-	{
-		if (map -> map_line[i] == 'P')
-			break ;
-		i++;
-	}
-	if (map->y >= 64)
-	{	
-		if (map->map_line[i + map->width] == '1')
-			return ;
-		if (map->map_line[i + map->width] == 'E' && map->all_items != map->c_items)
-			return ;
-		map->y = 0;
-		if (map->map_line[i + map->width] == 'C')
-			map->c_items++;
-		if (map->map_line[i + map->width] == 'T')
-			exit_game(map);
-		if (map->map_line[i + map->width] == 'E' && map->all_items == map->c_items)
-			exit_game(map);
-		else if (map -> map_line[i + map->width] != '1' || map -> map_line[i + map->width] != 'E')
-		{
-			map->map_line[i + map->width] = 'P';
-			map->map_line[i] = '0';
-		}
-	}
-	setting_img_s1(map);
-	map->walk_cnt++;
-}
 
 void	setting_img_s2(t_map *map, int hei, int wid)
 {
@@ -127,4 +90,46 @@ void	setting_img_s1(t_map *map)
 	setting_img_s3(map);
 	mlx_string_put(map->mlx, map->win, 10, 10, create_trgb(0, 255, 255, 255), walk_cnt);
 	free(walk_cnt);
+}
+
+static int	move_s2(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < map->map_size)
+		if (map->map_line[i] == 'P')
+			break ;
+	if (map->y == 32)
+		if (map->map_line[i + map->width] == '1')
+			return (1);
+	if (map->y == 48)
+		if (map->map_line[i + map->width] == 'E' && map->c_items != map->all_items)
+			return (1);
+	if (map->y == 64)
+	{
+		if (map->map_line[i + map->width] == 'T')
+			exit_game(map);
+		if (map->map_line[i + map->width] == 'E' && map->c_items == map->all_items)
+			exit_game(map);
+		map->map_line[i + map->width] = 'P';
+		map->map_line[i] = '0';
+		map->y = 0;
+	}
+	return (0);
+}
+
+void	move_s(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < map->map_size)
+		if (map->map_line[i] == 'C')
+			map->c_items++;
+	if (move_s2(map))
+		return ;
+	map->walk_cnt++;
+	move_enemy(map);
+	setting_img_s1(map);
 }

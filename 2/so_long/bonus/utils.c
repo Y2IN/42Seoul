@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 20:44:43 by yje               #+#    #+#             */
-/*   Updated: 2022/10/10 18:17:24 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/11 19:31:27 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,5 @@ int	press_key(int key_code, t_map *map)
 		move_s(map);
 	if (key_code == KEY_D)
 		move_d(map);
-	move_enemy(map);
 	return (0);
 }
