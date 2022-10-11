@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 20:37:58 by yje               #+#    #+#             */
-/*   Updated: 2022/10/10 12:55:45 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/11 21:00:45 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	first_line_check(char *line, t_map *map)
 	char	**line_split;
 
 	size = ft_strlen(line);
+	if (size <= 1)
+		print_error("map error -> size error");
 	width = 0;
 	while (width < size -1)
 	{

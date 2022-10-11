@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_a_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 17:51:41 by yje               #+#    #+#             */
-/*   Updated: 2022/10/11 19:49:21 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/11 20:24:57 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	setting_img_a2(t_map *map, int hei, int wid)
 		put_img(map, map->obj->teacher[0].pt, w64 + 16, h64 + 16);
 	else if (map->map_line[hei * map->width + wid] == 'E')
 	{
-		if (map->c_items == map->all_items)
+		if (map->c_items == 0)
 			put_img(map, map->obj->door[1].pt, w64 + 16, h64 + 16);
 		else
 			put_img(map, map->obj->door[0].pt, w64 + 16, h64 + 16);
@@ -38,6 +38,7 @@ void	put_img_rd_a(t_map *map, int w64, int h64)
 {
 	int rd;
 
+	map->x = map->x - 8;
 	rd = map->x % 3;
 	put_img(map, map->obj->sa[rd].pt, w64, h64);
 	
@@ -110,11 +111,11 @@ static int	move_a2(t_map *map)
 	{
 		if (map->map_line[i - 1] == '1')
 			return (1);
-		if (map->map_line[i - 1] == 'E' && map->c_items ==  map->all_items)
+		if (map->map_line[i - 1] == 'E' && map->c_items == 0)
 			exit_game(map);
 		if (map->map_line[i - 1] == 'T')
 			exit_game(map);
-		if (map->map_line[i - 1] == 'E' && map->c_items !=  map->all_items)
+		if (map->map_line[i - 1] == 'E' && map->c_items != 0)
 			return (1);
 		map->map_line[i - 1] = 'P';
 		map->map_line[i] = '0';
@@ -128,6 +129,7 @@ void	move_a(t_map *map)
 	int	i;
 
 	i = 0;
+	map->c_items = 0;
 	while (i++ < map->map_size)
 		if (map->map_line[i] == 'C')
 			map->c_items++;
