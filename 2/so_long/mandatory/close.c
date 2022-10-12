@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 02:02:45 by yje               #+#    #+#             */
-/*   Updated: 2022/10/06 15:27:12 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/12 19:04:58 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ int	exit_game(t_map *game)
 
 void	print_error(char *msg)
 {
-	printf("ERROR : %s\n", msg);
+	printf("Error\n%s", msg);
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 14:02:54 by yje               #+#    #+#             */
-/*   Updated: 2022/10/11 20:26:25 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/12 18:38:21 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	setting_img_d2(t_map *map, int hei, int wid)
 		put_img(map, map->obj->tree[0].pt, w64, h64);
 	else if (map->map_line[hei * map->width + wid] == 'C')
 		put_img(map, map->obj->item[0].pt, w64, h64);
-	else if(map->map_line[hei * map->width + wid] == 'T')
+	else if (map->map_line[hei * map->width + wid] == 'T')
 		put_img(map, map->obj->teacher[0].pt, w64 + 16, h64 + 16);
 	else if (map->map_line[hei * map->width + wid] == 'E')
 	{
@@ -34,31 +34,20 @@ void	setting_img_d2(t_map *map, int hei, int wid)
 	}
 }
 
-void	put_img_rd_d(t_map *map, int w64, int h64)
-{
-	int rd;
-
-	map->x = map->x + 8;
-	rd = map->x % 3;
-	put_img(map, map->obj->sd[rd].pt, w64, h64);
-	
-}
-
 void	setting_img_d3(t_map *map)
 {
-	int hei;
-	int wid;
-	int h64;
-	int w64;
-
+	int	hei;
+	int	wid;
+	int	h64;
+	int	w64;
 
 	hei = 0;
-	while(hei < map->height)
+	while (hei < map->height)
 	{
 		wid = 0;
-		while(wid < map->width)
+		while (wid < map->width)
 		{
-			if (map->map_line[hei * map->width +wid] == 'P')
+			if (map->map_line[hei * map->width + wid] == 'P')
 			{
 				h64 = hei * 64 + map->y;
 				w64 = wid * 64 + map->x;
@@ -72,13 +61,13 @@ void	setting_img_d3(t_map *map)
 
 void	setting_img_d1(t_map *map)
 {
-	int 	hei;
-	int 	wid;
+	int		hei;
+	int		wid;
 	char	*walk_cnt;
 
 	hei = 0;
 	walk_cnt = ft_itoa(map->walk_cnt);
-	while(hei < map->height)
+	while (hei < map->height)
 	{
 		wid = 0;
 		while (wid < map->width)
@@ -90,7 +79,8 @@ void	setting_img_d1(t_map *map)
 		hei++;
 	}
 	setting_img_d3(map);
-	mlx_string_put(map->mlx, map->win, 10, 10, create_trgb(0, 255, 255, 255), walk_cnt);
+	mlx_string_put(map->mlx, map->win, 10, 10, \
+		create_trgb(0, 255, 255, 255), walk_cnt);
 	free(walk_cnt);
 }
 
@@ -115,7 +105,7 @@ static int	move_d2(t_map *map)
 			return (1);
 		map->map_line[i + 1] = 'P';
 		map->map_line[i] = '0';
-		map->x= 0;
+		map->x = 0;
 	}
 	return (0);
 }

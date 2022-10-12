@@ -6,7 +6,7 @@
 #    By: yje <yje@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 18:08:10 by yje               #+#    #+#              #
-#    Updated: 2022/10/10 21:08:11 by yje              ###   ########.fr        #
+#    Updated: 2022/10/12 18:50:04 by yje              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,10 @@ MPATH_DIR	=	mandatory/
 MPATH		=	$(addprefix $(MPATH_DIR), $(MPATH_SRCS))
 OBJ_M		=	$(MPATH:.c=.o)
 
-BPATH_SRCS	=	close_bonus.c main.c map_check.c mlx_utils.c move_a_bonus.c \
-move_w_bonus.c move_s_bonus.c move_d_bonus.c obj_init_bonus.c utils.c enemy_move.c enemy_move2.c
+BPATH_SRCS	=	close_bonus.c main_bonus.c map_check_bonus.c mlx_utils_bonus.c move_a_bonus.c \
+move_w_bonus.c move_s_bonus.c move_d_bonus.c obj_init_bonus.c utils_bonus.c enemy_move_bonus.c \
+enemy_move2_bonus.c put_image_rd_bonus.c
+
 BPATH_DIR	=	bonus/
 BPATH		=	$(addprefix $(BPATH_DIR), $(BPATH_SRCS))
 OBJ_B		=	$(BPATH:.c=.o)

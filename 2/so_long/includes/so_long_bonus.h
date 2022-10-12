@@ -6,12 +6,12 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:13:24 by yje               #+#    #+#             */
-/*   Updated: 2022/10/10 20:58:10 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/12 18:46:18 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <stdio.h>
 # include <fcntl.h>
@@ -139,6 +139,5 @@ void	enemy_move_0(t_map *map, int i);
 void	enemy_move_1(t_map *map, int i);
 void	enemy_move_2(t_map *map, int i);
 void	enemy_move_3(t_map *map, int i);
-
 
 #endif
