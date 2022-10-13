@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:13:24 by yje               #+#    #+#             */
-/*   Updated: 2022/10/12 18:46:18 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/13 13:29:51 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ void	setting_img_w3(t_map *map);
 void	setting_img_w1(t_map *map);
 
 /* obj_init.c */
-
 void	obj_move_init(t_map *map);
 void	img_init(t_map *map, t_img *img, int i, char *xpm);
 
