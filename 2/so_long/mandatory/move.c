@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 16:10:50 by yje               #+#    #+#             */
-/*   Updated: 2022/10/13 16:08:12 by yje              ###   ########.fr       */
+/*   Updated: 2022/10/14 16:05:44 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,10 @@ void	move_w(t_map *map)
 {
 	size_t	i;
 
-	i = 0;
-	while (i < ft_strlen(map->map_line))
-	{
+	i = -1;
+	while (++i < ft_strlen(map->map_line))
 		if (map -> map_line[i] == 'P')
 			break ;
-		i++;
-	}
 	if (map->map_line[i - map->width] == '1')
 		return ;
 	if (map->map_line[i - map->width] == 'C')
@@ -104,13 +101,10 @@ void	move_s(t_map *map)
 {
 	size_t	i;
 
-	i = 0;
-	while (i < ft_strlen(map->map_line))
-	{
+	i = -1;
+	while (++i < ft_strlen(map->map_line))
 		if (map -> map_line[i] == 'P')
 			break ;
-		i++;
-	}
 	if (map->map_line[i + map->width] == '1')
 		return ;
 	if (map->map_line[i + map->width] == 'C')
