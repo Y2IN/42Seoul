@@ -8,7 +8,7 @@
 |03|01|[**Born2beroot**]()|LINUX|Success 125 / 100|[**Notion**]()|
 |04|02|[**pipex**](https://github.com/Y2IN/42Seoul/tree/main/2/pipex)|C|Success 125 / 100|[**Notion**]()|
 |05|02|[**SoLong**](https://github.com/Y2IN/42Seoul/tree/main/2/so_long)|C|Success 125 / 100|[**Notion**]()|
-|05|02|[**push_swap**](https://github.com/Y2IN/42Seoul/tree/main/2/push_swap)|C|[**Notion**]()|
+|05|02|[**push_swap**](https://github.com/Y2IN/42Seoul/tree/main/2/push_swap)|C|yet|[**Notion**]()|
 
 
 [노션](https://iamyje.notion.site/42Seoul-09c1242472784798b596d9d71b67d029)
