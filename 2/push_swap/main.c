@@ -6,13 +6,14 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:28:41 by yje               #+#    #+#             */
-/*   Updated: 2022/11/03 18:53:29 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/04 21:24:10 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void initStack(t_var *var){
+void init_stack(t_var *var)
+{
 	var->stack_a = (t_stack *)malloc(sizeof (t_stack));
 	var->stack_b = (t_stack *)malloc(sizeof (t_stack));
 	var->stack_a->top = add_new_node(0);
@@ -54,6 +55,22 @@ t_node	*pop_top(t_stack *stack)
 	return(tmp);
 }
 
+t_node	*pop_bottom(t_stack *stack)
+{
+	t_node	*bottom;
+	t_node	*tmp;
+
+	bottom = stack->bottom;
+	if(bottom->left == stack->top)
+		return (0);
+	tmp = bottom->left;
+	tmp->left->right = bottom;
+	bottom->left = tmp->left;
+	tmp->left = NULL;
+	tmp->right = NULL;
+	return(tmp);
+}
+
 void push_top(t_stack *stack, t_node *new_node)
 {
 	t_node *tmp;
@@ -78,4 +95,29 @@ void push_bottom(t_stack *stack, t_node *new_node)
 	tmp->right = new_node;
 	new_node->right = bottom;
 	new_node->left = tmp;	
+}
+
+#include <stdio.h>
+
+int main(int ac, char **av)
+{
+	int i;
+	t_var var;
+
+	i = 1;
+	validate_args(ac, av);
+	// init_stack(&var);
+	// while (i < argc)
+	// {
+	// 	// push_top(var.stack_a, add_new_node(atoi(argv[i])));
+	// 	// push_top(var.stack_b, add_new_node(atoi(argv[i])));
+	// 	i++;
+	// }
+	// pb(&var);
+	// while (i > 1) {
+	// 	// printf("a : %d\n", pop_top(var.stack_a)->val);
+	// 	// printf("b: %d\n", pop_top(var.stack_b)->val);
+	// 	i--;
+	// }
+	return (0);
 }

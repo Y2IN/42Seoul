@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:19:19 by yje               #+#    #+#             */
-/*   Updated: 2022/11/03 18:50:54 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/04 21:38:29 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_var
 {
 	struct s_stack	*stack_a;
 	struct s_stack	*stack_b;
+	
 } t_var;
 
 
@@ -44,6 +45,32 @@ void	pb(t_var *stacks);
 void	sa(t_var *stacks);
 void	sb(t_var *stacks);
 void	ss(t_var *stacks);
+
+/* operations.r */
+void	ra(t_var *stacks);
+void	rb(t_var *stacks);
+
+/* utils_split.c */
+static int	ft_size_check(char const *str, char c);
+static int	ft_str_check(char const *str, char c);
+void	ft_free(char **arr, int i);
+static char	**ft_too_many_lines(char **arr, char const *str, char c, int i);
+char	**ft_split(char const *s, char c);
+
+/* utils.c */
+size_t	ft_strlen(const char *s);
+int	ft_atoi(const char *str);
+
+/* args.c */
+char *join_argv(int ac, char **av);
+void validate_args(int ac, char **av);
+
+void init_stack(t_var *var);
+t_node	*add_new_node(int n);
+t_node	*pop_top(t_stack *stack);
+t_node	*pop_bottom(t_stack *stack);
+void push_top(t_stack *stack, t_node *new_node);
+void push_bottom(t_stack *stack, t_node *new_node);
 
 
 #endif

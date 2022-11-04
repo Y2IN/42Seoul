@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:42:01 by yje               #+#    #+#             */
-/*   Updated: 2022/11/03 18:45:04 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/04 18:04:38 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	pa(t_var *stacks)
 {
-	int tmp1;
-
+	t_node *tmp1;
+	
 	tmp1 = pop_top(stacks->stack_b);
 	push_top(stacks->stack_a, tmp1);
 	write(1, "pa\n", 3);
@@ -23,9 +23,9 @@ void	pa(t_var *stacks)
 
 void	pb(t_var *stacks)
 {
-	int tmp1;
+	t_node *tmp1;
 
 	tmp1 = pop_top(stacks->stack_a);
-	push_top(stacks->stack_a, tmp1);
+	push_top(stacks->stack_b, tmp1);
 	write(1, "pb\n", 3);
 }
