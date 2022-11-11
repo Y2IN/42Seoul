@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:19:19 by yje               #+#    #+#             */
-/*   Updated: 2022/11/04 21:38:29 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/11 00:26:40 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_var
 {
 	struct s_stack	*stack_a;
 	struct s_stack	*stack_b;
+	long			*list;
+	int				list_size;
 	
 } t_var;
 
@@ -59,18 +61,36 @@ char	**ft_split(char const *s, char c);
 
 /* utils.c */
 size_t	ft_strlen(const char *s);
+char	*ft_strchr(const char *s, int c);
+int is_number(char *str);
 int	ft_atoi(const char *str);
 
 /* args.c */
 char *join_argv(int ac, char **av);
-void validate_args(int ac, char **av);
+void validate_args(int ac, char **av, t_var *var);
+static int	ps_size_check(char const *str, char c);
 
+/* stack.c */
 void init_stack(t_var *var);
 t_node	*add_new_node(int n);
+
+/* stack_pop.c */
 t_node	*pop_top(t_stack *stack);
 t_node	*pop_bottom(t_stack *stack);
+
+/* stack_push.c */
 void push_top(t_stack *stack, t_node *new_node);
 void push_bottom(t_stack *stack, t_node *new_node);
+
+/* sort.c */
+void issort(t_var *stack);
+int find_max(t_var *stack);
+void indexing(t_var *stack);
+
+
+
+/* main.c */
+void	print_error(void);
 
 
 #endif

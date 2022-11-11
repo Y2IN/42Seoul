@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 20:00:46 by yje               #+#    #+#             */
-/*   Updated: 2022/11/04 20:03:32 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/09 15:13:56 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,33 @@ size_t	ft_strlen(const char *s)
 		len++;
 	}
 	return (len);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	if (*s == (char)c)
+		return ((char *)s);
+	return (0);
+}
+
+int is_number(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_strchr("+-0123456789", str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	ft_atoi(const char *str)

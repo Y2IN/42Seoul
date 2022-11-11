@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:55:35 by yje               #+#    #+#             */
-/*   Updated: 2022/11/04 22:01:16 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/11 00:27:41 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,56 @@ char *join_args(int ac, char **av)
 	str[k] = '\0';
 	return (str);
 }
+void	check_overlap(t_var *stack, int check)
+{
+	int i;
+	long *tmp;
+	i = 0;
+	while (i < stack->list_size)
+	{
+		if(stack->list[i] == check)
+			print_error();
+		i++;
+	}
+	stack->list_size++;
+	tmp = (long *)malloc(sizeof(long) * stack->list_size);
+	if (!tmp)
+		print_error();
+	if (stack->list_size == 1)
+		tmp[0] = check;
+	else 
+	{
+		i = -1;
+		while (++i < stack->list_size -1)
+			tmp[i] = stack->list[i];
+		tmp[i] = check;
+	}
+	stack->list = tmp;
+}
 
-void validate_args(int ac, char **av)
+void	validate_args(int ac, char **av, t_var *stack)
 {
 	char *args;
 	char **tmp;
+	int i;
+	t_node *new_node;
 
+	i = 0;
 	args = join_args(ac, av);
-	// printf("%s\n", args);
 	tmp = ft_split(args, ' ');
-	printf("%s", tmp[0]);
 	free(args);
+	// printf("[%s]\n", tmp[0]);
+	while (tmp[i])
+	{
+		// printf("[%d]\n", ft_atoi(tmp[i]));
+		// printf("in\n\n");
+		if (!is_number(tmp[i]))
+			print_error();
+		new_node = add_new_node(ft_atoi(tmp[i]));
+		check_overlap(stack, new_node->val);
+		printf("[%s]\n", tmp[i]);
+		i++;
+		free(new_node);
+	}
+	free(tmp);
 }
