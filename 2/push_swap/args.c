@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:55:35 by yje               #+#    #+#             */
-/*   Updated: 2022/11/11 00:27:41 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/11 15:56:03 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	validate_args(int ac, char **av, t_var *stack)
 			print_error();
 		new_node = add_new_node(ft_atoi(tmp[i]));
 		check_overlap(stack, new_node->val);
-		printf("[%s]\n", tmp[i]);
+		// printf("[%s]\n", tmp[i]);
 		i++;
 		free(new_node);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:19:19 by yje               #+#    #+#             */
-/*   Updated: 2022/11/11 00:26:40 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/11 16:02:23 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ typedef struct s_var
 	struct s_stack	*stack_b;
 	long			*list;
 	int				list_size;
+	int				a_size;
+	int				b_size;
+	int				max_size;
 	
 } t_var;
 
@@ -73,6 +76,7 @@ static int	ps_size_check(char const *str, char c);
 /* stack.c */
 void init_stack(t_var *var);
 t_node	*add_new_node(int n);
+void stacking(t_var *stack);
 
 /* stack_pop.c */
 t_node	*pop_top(t_stack *stack);
@@ -82,12 +86,13 @@ t_node	*pop_bottom(t_stack *stack);
 void push_top(t_stack *stack, t_node *new_node);
 void push_bottom(t_stack *stack, t_node *new_node);
 
-/* sort.c */
+/* checksort.c */
 void issort(t_var *stack);
 int find_max(t_var *stack);
 void indexing(t_var *stack);
 
-
+/* sort.c */
+void	swaping(t_var *stack);
 
 /* main.c */
 void	print_error(void);

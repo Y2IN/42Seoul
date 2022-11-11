@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:05:32 by yje               #+#    #+#             */
-/*   Updated: 2022/11/09 15:41:52 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/11 17:40:59 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ void init_stack(t_var *var)
 	var->stack_b->top = add_new_node(0);
 	var->stack_b->bottom = add_new_node(0);
 	var->stack_b->top->right = var->stack_b->bottom;
-	var->stack_b->bottom->left = var->stack_b->top;	
+	var->stack_b->bottom->left = var->stack_b->top;
+	var->a_size = 0;
+	var->b_size = 0;
+	var->list_size = 0;
 }
 
 t_node	*add_new_node(int n)
@@ -38,4 +41,18 @@ t_node	*add_new_node(int n)
 	node->left = NULL;
 	node->right = NULL;
 	return (node);
+}
+
+void stacking(t_var *stack)
+{
+	t_node *new_node;
+	int i;
+
+	i = 0;
+	while(i<stack->list_size)
+	{
+		new_node = add_new_node(stack->list[i] + 1);
+		push_bottom(stack->stack_a, new_node);
+		i++;
+	}
 }

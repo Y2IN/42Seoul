@@ -3,80 +3,138 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 23:19:15 by yje               #+#    #+#             */
-/*   Updated: 2022/11/11 01:04:00 by yje              ###   ########.fr       */
+/*   Created: 2022/11/11 15:59:04 by yje               #+#    #+#             */
+/*   Updated: 2022/11/11 18:50:22 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include<stdio.h>
 
-void issort(t_var *stack)
+void	swaping(t_var *stack)
 {
-    int i;
-    int count;
-
-    i = 0;
-    count = 0;
-	printf("%d\n", stack->list_size);
-    while(i < stack->list_size)
-    {
-        if (stack->list[i] > stack->list[i + 1])
-            count++;
-		i++; 
-    }
-	printf("-------------------------\n");
-	printf("%d\n", count);
-	if (count == 1)
-		exit(0);
+	stack->a_size = stack->list_size;
+	if (stack->list_size == 2)
+		sa(stack);
+	if (stack->list_size == 3)
+		sort_three(stack);
+	else
+		sort_all(stack);
 }
 
-int find_max(t_var *stack)
+void sort_three(t_var *stack)
 {
-	long change;
-	int i;
+	int top;
+	int middle;
+	int bottom;
 
-	change = -2147483649;
-	i = 0;
-
-	while (i < stack->list_size)
+	top = stack->stack_a->top->right->val;
+	middle = stack->stack_a->top->right->right->val;
+	bottom = stack->stack_a->bottom->left->val;
+	
+	if(middle > top && middle > bottom && bottom > top)
 	{
-		if (change < stack->list[i])
-			change = stack->list[i];
-		i++;
+		sa(stack);
+		ra(stack);
 	}
-	i = 0;
-	while(i < stack->list_size)
+	else if (top > middle && bottom > middle && bottom > top)
+		sa(stack);
+	else if (top > middle && middle > bottom && top > bottom)
 	{
-		if (change == stack->list[i])
+		sa(stack);
+		rra(stack);
+	}
+	else if(top > middle && bottom > middle && top > bottom)
+		ra(stack);
+	else if(middle>top && middle > bottom && top>bottom)
+		rra(stack);
+}
+
+void sort_args(t_var *stack)
+{
+	int a;
+	int b;
+
+	devide_pivot(stack);
+	while (stack->a_size > 3)
+		pb(stack);
+	if (stack->a_size == 2)
+	{
+		if(stack->stack_a->top->right->val \
+		> stack->stack_a->bottom->left->val)
+			sa(stack);
+	}
+	if (stack->a_size == 3)
+		sort_three(stack);
+	while (stack->b_size)
+	{
+		a = 0;
+		b = 0;
+		min_rotate(stack, &a, &b);
+		
+		
+	}
+}
+void	devide_pivot(t_var *stack)
+{
+	t_node	*tmp;
+	int count;
+	int p1;
+	int p2;
+
+	p1 = stack->max_size / 3;
+	p2 = (stack->max_size / 3) * 2;
+	count = 0;
+
+	while (count < stack->max_size)
+	{
+		tmp = pop_top(stack->stack_a);
+		if(tmp->val < p2)
 		{
-			stack->list[i] = -2147483649;
-			return (i+1);
+			push_top(stack->stack_a, tmp);
+			pb(stack);
+			if(tmp->val < p1)
+				rb(stack);
 		}
-		i++;
+		else
+		{
+			push_top(stack->stack_a, tmp);
+			ra(stack);
+		}
+		count++;
 	}
-	return (-1);
 }
 
-void indexing(t_var *stack)
+int find_a(int n, t_var *stack)
 {
-	long *indexing_list;
-	int max_i;
-	int i;
+		
+}
 
-	indexing_list = (long *)malloc(sizeof(long) * stack->list_size);
-	if(!indexing_list)
-		print_error();
-	i = stack->list_size ;
-	while (i > 0)
+void	min_rotate(t_var *stack, int *a, int *b)
+{
+	int i;
+	int num;
+	int a_location;
+	int b_location;
+	t_node	*b_node;
+	
+	i = 0;
+	b_node = stack->stack_b->top->right;
+	while(i < stack->b_size)
 	{
-		max_i = find_max(stack);
-		printf("max_i : [%d]\n", max_i);
-		indexing_list[max_i] = i;
-		i--;
+		num = b_node->val;
+		a_location = find_a(num, stack); //
+		if (i >= (stack->b_size + 1) / 2)
+			b_location = (stack->b_size - i) * -1;
+		else
+			b_location = i;
+		if (i == 0 || get_bigger(*a, *b, a_location, b_location)) //
+		{
+			*a = a_location;
+			*b = b_location;
+		}	
+		b_node = b_node->right;
+		i++;
 	}
-	free(stack->list);
-	stack->list = indexing_list;
 }
