@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operationr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:45:34 by yje               #+#    #+#             */
-/*   Updated: 2022/11/03 19:01:48 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/13 00:11:07 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	rra(t_var *stacks)
 	
 	tmp = pop_bottom(stacks->stack_a);
 	push_top(stacks->stack_a, tmp);
-	write(1, "rra\n", 3);
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_var *stacks)
@@ -56,7 +56,7 @@ void	rrb(t_var *stacks)
 	
 	tmp = pop_bottom(stacks->stack_b);
 	push_top(stacks->stack_b, tmp);
-	write(1, "rrb\n", 3);
+	write(1, "rrb\n", 4);
 
 }
 
@@ -68,5 +68,5 @@ void	rrr(t_var *stacks)
 	push_top(stacks->stack_a, tmp);
 	tmp = pop_bottom(stacks->stack_b);
 	push_top(stacks->stack_b, tmp);
-	write(1, "rrr\n", 3);
+	write(1, "rrr\n", 4);
 }

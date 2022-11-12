@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:19:19 by yje               #+#    #+#             */
-/*   Updated: 2022/11/12 22:54:32 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/13 00:21:07 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ typedef struct s_var
 	int				list_size;
 	int				a_size;
 	int				b_size;
-	int				max_size;
-	
 } t_var;
 
 

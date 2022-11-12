@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 15:59:04 by yje               #+#    #+#             */
-/*   Updated: 2022/11/12 23:33:12 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/13 01:05:38 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,19 +87,19 @@ void	a_rotate(t_var *stacks, int a)
 	}
 }
 
-void	b_rotate(t_var *stacks, int a)
+void	b_rotate(t_var *stacks, int b)
 {
-	while (a)
+	while (b)
 	{
-		if (a > 0)
+		if (b > 0)
 		{
-			ra(stacks);
-			a--;
+			rb(stacks);
+			b--;
 		}
 		else
 		{
-			rra(stacks);
-			a++;
+			rrb(stacks);
+			b++;
 		}
 	}
 }
@@ -140,7 +140,6 @@ void sort_all(t_var *stack)
 	}
 	if (stack->a_size == 3)
 		sort_three(stack);
-	printf("here\n");
 	while (stack->b_size)
 	{
 		a = 0;
@@ -161,11 +160,11 @@ void	devide_pivot(t_var *stack)
 	int p1;
 	int p2;
 
-	p1 = stack->max_size / 3;
-	p2 = (stack->max_size / 3) * 2;
+	p1 = stack->list_size / 3;
+	p2 = (stack->list_size / 3) * 2;
 	count = 0;
-
-	while (count < stack->max_size)
+	printf("p1 : [%d]\np2 : [%d]\nmax_size : [%d]\n", p1, p2, stack->list_size);
+	while (count < stack->list_size)
 	{
 		tmp = pop_top(stack->stack_a);
 		if(tmp->val < p2)
@@ -193,7 +192,6 @@ int	get_stack_min(t_var *stacks)
 	stack = stacks->stack_a->top->right;
 	res = stack->val;
 	count = 0;
-
 	while(count < stacks->a_size - 1)
 	{
 		if (res > stack->right->val)
@@ -266,6 +264,7 @@ int find_a_max(t_var *stacks)
 		res++;
 		stack_a = stack_a->right;
 	}
+	res++;
 	if (res >= (stacks->a_size + 1) / 2)
 		res = (stacks->a_size - res) * -1;
 	return(res);
@@ -301,7 +300,7 @@ int find_a(int n, t_var *stack)
 
 	if (n < get_stack_min(stack))
 		res = find_a_min(stack);
-	else if( n > get_stack_max(stack))
+	else if(n > get_stack_max(stack))
 		res = find_a_max(stack);
 	else
 		res = find_a_mid(n, stack);
