@@ -12,36 +12,31 @@ yje@student.42.fr>                    +#+  +:+       +#+        */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include<stdio.h>
 
-void issort(t_var *stack)
+void	issort(t_var *stack)
 {
-    int i;
-    int count;
+	int		i;
+	int		count;
 
-    i = 0;
-    count = 0;
-	// printf("%d\n", stack->list_size);
-    while(i < stack->list_size)
-    {
-        if (stack->list[i] > stack->list[i + 1])
-            count++;
-		i++; 
-    }
-	// printf("-------------------------\n");
-	// printf("%d\n", count);
+	i = 0;
+	count = 0;
+	while (i < stack->list_size)
+	{
+		if (stack->list[i] > stack->list[i + 1])
+			count++;
+		i++;
+	}
 	if (count == 1)
 		exit(0);
 }
 
-int find_max(t_var *stack)
+int	find_max(t_var *stack)
 {
-	long change;
-	int i;
+	long	change;
+	int		i;
 
 	change = -2147483649;
 	i = 0;
-
 	while (i < stack->list_size)
 	{
 		if (change < stack->list[i])
@@ -49,7 +44,7 @@ int find_max(t_var *stack)
 		i++;
 	}
 	i = 0;
-	while(i < stack->list_size)
+	while (i < stack->list_size)
 	{
 		if (change == stack->list[i])
 		{
@@ -61,14 +56,14 @@ int find_max(t_var *stack)
 	return (-1);
 }
 
-void indexing(t_var *stack)
+void	indexing(t_var *stack)
 {
-	long *indexing_list;
-	int max_i;
-	int i;
+	long	*indexing_list;
+	int		max_i;
+	int		i;
 
 	indexing_list = (long *)malloc(sizeof(long) * stack->list_size);
-	if(!indexing_list)
+	if (!indexing_list)
 		print_error();
 	i = stack->list_size -1;
 	while (i >= 0)
@@ -77,6 +72,6 @@ void indexing(t_var *stack)
 		indexing_list[max_i] = i;
 		i--;
 	}
-	free(stack->list);
+	free (stack->list);
 	stack->list = indexing_list;
 }

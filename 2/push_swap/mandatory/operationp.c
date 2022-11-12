@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operationp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:42:01 by yje               #+#    #+#             */
-/*   Updated: 2022/11/11 17:46:10 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/13 02:43:09 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	pa(t_var *stacks)
 {
-	t_node *tmp1;
-	
-	if(stacks->stack_b->top->right != 0)
+	t_node	*tmp1;
+
+	if (stacks->stack_b->top->right != 0)
 	{
 		tmp1 = pop_top(stacks->stack_b);
 		push_top(stacks->stack_a, tmp1);
@@ -28,9 +28,9 @@ void	pa(t_var *stacks)
 
 void	pb(t_var *stacks)
 {
-	t_node *tmp1;
-	
-	if(stacks->stack_a->top->right != 0)
+	t_node	*tmp1;
+
+	if (stacks->stack_a->top->right != 0)
 	{
 		tmp1 = pop_top(stacks->stack_a);
 		push_top(stacks->stack_b, tmp1);

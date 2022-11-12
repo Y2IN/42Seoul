@@ -6,13 +6,13 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 20:00:46 by yje               #+#    #+#             */
-/*   Updated: 2022/11/09 15:13:56 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/13 03:28:15 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
 	size_t	len;
 
@@ -38,7 +38,7 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-int is_number(char *str)
+int	is_number(char *str)
 {
 	int	i;
 

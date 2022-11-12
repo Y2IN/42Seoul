@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 16:33:31 by yje               #+#    #+#             */
-/*   Updated: 2022/11/04 18:07:29 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/13 02:45:35 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	sa(t_var *stacks)
 {
-	t_node *tmp1;
-	t_node *tmp2;
+	t_node	*tmp1;
+	t_node	*tmp2;
 
 	tmp1 = pop_top(stacks->stack_a);
 	tmp2 = pop_top(stacks->stack_a);
@@ -26,8 +26,8 @@ void	sa(t_var *stacks)
 
 void	sb(t_var *stacks)
 {
-	t_node *tmp1;
-	t_node *tmp2;
+	t_node	*tmp1;
+	t_node	*tmp2;
 
 	tmp1 = pop_top(stacks->stack_b);
 	tmp2 = pop_top(stacks->stack_b);
@@ -38,8 +38,8 @@ void	sb(t_var *stacks)
 
 void	ss(t_var *stacks)
 {
-	t_node *tmp1;
-	t_node *tmp2;
+	t_node	*tmp1;
+	t_node	*tmp2;
 
 	tmp1 = pop_top(stacks->stack_a);
 	tmp2 = pop_top(stacks->stack_a);

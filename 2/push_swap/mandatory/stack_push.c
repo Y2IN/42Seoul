@@ -6,34 +6,34 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:06:30 by yje               #+#    #+#             */
-/*   Updated: 2022/11/09 15:13:40 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/13 03:05:44 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void push_top(t_stack *stack, t_node *new_node)
+void	push_top(t_stack *stack, t_node *new_node)
 {
-	t_node *tmp;
-	t_node *top;
+	t_node	*tmp;
+	t_node	*top;
 
 	top = stack->top;
 	tmp = top->right;
 	top->right = new_node;
 	tmp->left = new_node;
 	new_node->left = top;
-	new_node->right = tmp;	
+	new_node->right = tmp;
 }
 
-void push_bottom(t_stack *stack, t_node *new_node)
+void	push_bottom(t_stack *stack, t_node *new_node)
 {
-	t_node *tmp;
-	t_node *bottom;
+	t_node	*tmp;
+	t_node	*bottom;
 
 	bottom = stack->bottom;
 	tmp = bottom->left;
 	bottom->left = new_node;
 	tmp->right = new_node;
 	new_node->right = bottom;
-	new_node->left = tmp;	
+	new_node->left = tmp;
 }
