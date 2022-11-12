@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:28:41 by yje               #+#    #+#             */
-/*   Updated: 2022/11/11 16:00:28 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/12 23:57:05 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,30 +23,24 @@ void	print_error(void)
 
 int main(int ac, char **av)
 {
-	int i;
 	t_var stack;
 
-	if(ac>=2)
+	if(ac >= 2)
 	{
-		i = 1;
+		init_stack(&stack);
 		validate_args(ac, av, &stack);
 		issort(&stack);
 		indexing(&stack);
 		stacking(&stack);
+		// t_node *tmp = stack.stack_a->top->right;
+		// while (tmp->val != 0) {
+		// 	printf("%d\n", tmp->val);
+		// 	tmp = tmp->right;
+		// }
+		// printf("abcd\n");
 		swaping(&stack);
-		// init_stack(&var);
-		// while (i < argc)
-		// {
-		// 	// push_top(var.stack_a, add_new_node(atoi(argv[i])));
-		// 	// push_top(var.stack_b, add_new_node(atoi(argv[i])));
-		// 	i++;
-		// }
-		// pb(&var);
-		// while (i > 1) {
-		// 	// printf("a : %d\n", pop_top(var.stack_a)->val);
-		// 	// printf("b: %d\n", pop_top(var.stack_b)->val);
-		// 	i--;
-		// }
+		// printf("abcde\n");
+		exit(0);
 	}
 	return (0);
 }

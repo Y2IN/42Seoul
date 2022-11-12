@@ -54,7 +54,7 @@ int find_max(t_var *stack)
 		if (change == stack->list[i])
 		{
 			stack->list[i] = -2147483649;
-			return (i+1);
+			return (i);
 		}
 		i++;
 	}
@@ -70,11 +70,10 @@ void indexing(t_var *stack)
 	indexing_list = (long *)malloc(sizeof(long) * stack->list_size);
 	if(!indexing_list)
 		print_error();
-	i = stack->list_size ;
-	while (i > 0)
+	i = stack->list_size -1;
+	while (i >= 0)
 	{
 		max_i = find_max(stack);
-		// printf("max_i : [%d]\n", max_i);
 		indexing_list[max_i] = i;
 		i--;
 	}

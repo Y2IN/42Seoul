@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:05:32 by yje               #+#    #+#             */
-/*   Updated: 2022/11/11 17:40:59 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/12 23:46:59 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void init_stack(t_var *var)
 	var->stack_b->bottom = add_new_node(0);
 	var->stack_b->top->right = var->stack_b->bottom;
 	var->stack_b->bottom->left = var->stack_b->top;
+	var->list = (long *)malloc(sizeof(long));
 	var->a_size = 0;
 	var->b_size = 0;
 	var->list_size = 0;
@@ -49,7 +50,7 @@ void stacking(t_var *stack)
 	int i;
 
 	i = 0;
-	while(i<stack->list_size)
+	while(i < stack->list_size)
 	{
 		new_node = add_new_node(stack->list[i] + 1);
 		push_bottom(stack->stack_a, new_node);

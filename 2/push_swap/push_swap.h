@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:19:19 by yje               #+#    #+#             */
-/*   Updated: 2022/11/11 16:02:23 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/12 22:54:32 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ void	ss(t_var *stacks);
 /* operations.r */
 void	ra(t_var *stacks);
 void	rb(t_var *stacks);
+void	rr(t_var *stacks);
+void	rra(t_var *stacks);
+void	rrb(t_var *stacks);
+void	rrr(t_var *stacks);
 
 /* utils_split.c */
 static int	ft_size_check(char const *str, char c);
@@ -93,6 +97,34 @@ void indexing(t_var *stack);
 
 /* sort.c */
 void	swaping(t_var *stack);
+void sort_three(t_var *stack);
+void same_rotate(t_var *stack, int *a, int *b);
+
+void	a_rotate(t_var *stacks, int a);
+void	b_rotate(t_var *stacks, int a);
+void	sort_big_last(t_var *stacks);
+void sort_all(t_var *stack);
+void	devide_pivot(t_var *stack);
+int	get_stack_min(t_var *stacks);
+int find_a_min(t_var *stacks);
+int	get_stack_max(t_var *stacks);
+int find_a_max(t_var *stacks);
+int find_a_mid(int n, t_var *stacks);
+int find_a(int n, t_var *stack);
+int	get_bigger(int a, int b, int a_loc, int b_loc);
+void	min_rotate(t_var *stack, int *a, int *b);
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* main.c */
 void	print_error(void);
