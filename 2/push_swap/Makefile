@@ -6,7 +6,7 @@
 #    By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 02:32:00 by yje               #+#    #+#              #
-#    Updated: 2022/11/13 03:55:03 by yje              ###   ########.fr        #
+#    Updated: 2022/11/13 04:04:04 by yje              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,34 +20,31 @@ OBJS = args.c checksort.c find.c main.c operationp.c operationr.c operations.c \
 SRCS = $(addprefix mandatory/, $(OBJS))
 # SRCS_BONUS = $(addprefix bonus/, $(OBJS_CHECKER))
 SRCS_FILES = $(SRCS:c=o)
+SRCS_BONUS_FILES = $(SRCS_BONUS:c=o)
+
 MAND_DIR = mandatory
 
 NAME = push_swap
 RM = rm -rf
 
-%.o : %c $(HEADER) Makefile
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o : %c
+	$(CC) $(CFLAGS) -c $< -I.
 
 $(NAME) : $(SRCS_FILES)
 	$(CC) $(CFLAGS) -o $@ $^
-	@echo -e "$(GREEN)$(NAME) created!$(DEFAULT)"
+
 
 all : $(NAME)
 
+
 clean :
 	$(RM) $(SRCS_FILES)
-	@echo -e "$(YELLOW)object files deleted!$(DEFAULT)"
 
 fclean : clean
 	$(RM) $(NAME)
-	@echo -e "$(RED)all deleted!$(DEFAULT)"
 
-re : fclean all
+re :
+	make fclean
+	make all
 
-.PHONY: all clean fclean re
-
-#COLORS
-RED			=	\033[1;31m
-GREEN		=	\033[1;32m
-YELLOW		=	\033[1;33m
-DEFAULT		=	\033[0m
+.PHONY: all clean fclean re bonus
