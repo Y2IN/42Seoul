@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:28:41 by yje               #+#    #+#             */
-/*   Updated: 2022/11/13 02:42:22 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/18 00:28:18 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	print_error(void)
 int	main(int ac, char **av)
 {
 	t_var	stack;
-
 	if (ac >= 2)
 	{
 		init_stack(&stack);
@@ -30,7 +29,7 @@ int	main(int ac, char **av)
 		indexing(&stack);
 		stacking(&stack);
 		swaping(&stack);
-		exit(0);
+		exit(0);		
 	}
 	return (0);
 }

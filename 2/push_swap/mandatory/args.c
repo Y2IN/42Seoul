@@ -6,11 +6,30 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:55:35 by yje               #+#    #+#             */
-/*   Updated: 2022/11/13 03:29:14 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/17 23:14:38 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	size_check(char const *str, char c)
+{
+	int	size;
+	int	i;
+
+	i = 0;
+	size = 0;
+	while (str[i])
+	{
+		while (str[i] && str[i] == c)
+			i++;
+		if (str[i] != '\0')
+			size++;
+		while (str[i] && str[i] != c)
+			i++;
+	}
+	return (size);
+}
 
 char	*join_args(int ac, char **av)
 {
@@ -66,6 +85,7 @@ void	check_overlap(t_var *stack, int check)
 			tmp[i] = stack->list[i];
 		tmp[i] = check;
 	}
+	free(stack->list);
 	stack->list = tmp;
 }
 
@@ -74,17 +94,20 @@ void	validate_args(int ac, char **av, t_var *stack)
 	char	*args;
 	char	**tmp;
 	int		i;
+	int		tmp_size;
 	t_node	*new_node;
 
 	i = 0;
 	args = join_args(ac, av);
 	tmp = ft_split(args, ' ');
+	tmp_size = size_check(args, ' ');
 	free (args);
-	while (tmp[i])
+	while (i < tmp_size)
 	{
 		if (!is_number(tmp[i]))
 			print_error();
 		new_node = add_new_node(ft_atoi(tmp[i]));
+		free(tmp[i]);
 		check_overlap(stack, new_node->val);
 		i++;
 		free(new_node);

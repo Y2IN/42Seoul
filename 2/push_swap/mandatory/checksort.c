@@ -3,11 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checksort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <
-yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 23:19:15 by yje               #+#    #+#             */
-/*   Updated: 2022/11/11 15:58:56 by yje              ###   ########.fr       */
+/*   Created: 2022/11/18 00:18:00 by yje               #+#    #+#             */
+/*   Updated: 2022/11/18 00:27:25 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +19,13 @@ void	issort(t_var *stack)
 
 	i = 0;
 	count = 0;
-	while (i < stack->list_size)
+	while (i < stack->list_size - 1)
 	{
 		if (stack->list[i] > stack->list[i + 1])
 			count++;
 		i++;
 	}
-	if (count == 1)
+	if (count == 0)
 		exit(0);
 }
 
