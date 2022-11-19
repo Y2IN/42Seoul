@@ -6,12 +6,11 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:05:32 by yje               #+#    #+#             */
-/*   Updated: 2022/11/17 22:19:10 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/19 19:43:02 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	init_stack(t_var *var)
 {
@@ -53,6 +52,8 @@ void	stacking(t_var *stack)
 	while (i < stack->list_size)
 	{
 		new_node = add_new_node(stack->list[i] + 1);
+		if (!new_node)
+			print_error();
 		push_bottom(stack->stack_a, new_node);
 		i++;
 	}

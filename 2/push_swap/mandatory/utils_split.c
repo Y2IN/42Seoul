@@ -6,12 +6,11 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:45:37 by yje               #+#    #+#             */
-/*   Updated: 2022/11/17 22:20:55 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/19 19:30:43 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static int	ft_size_check(char const *str, char c)
 {

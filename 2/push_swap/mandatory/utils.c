@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 20:00:46 by yje               #+#    #+#             */
-/*   Updated: 2022/11/17 23:00:38 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/19 00:04:47 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,16 @@ int	is_number(char *str)
 			return (0);
 		i++;
 	}
+	if (ft_atoi(str) > 2147483647 || ft_atoi(str) < -2147483648)
+		return (0);
 	return (1);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int		i;
 	int		sign;
-	int		result;
+	long	result;
 
 	i = 0;
 	sign = 1;

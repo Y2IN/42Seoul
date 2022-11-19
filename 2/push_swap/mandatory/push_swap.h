@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:19:19 by yje               #+#    #+#             */
-/*   Updated: 2022/11/17 22:45:58 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/19 00:04:47 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,6 @@ char	**ft_split(char const *s, char c);
 int		ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 int		is_number(char *str);
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 
 #endif
