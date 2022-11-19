@@ -1,0 +1,89 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/16 16:09:31 by yje               #+#    #+#             */
+/*   Updated: 2022/11/19 20:30:16 by yje              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap_bonus.h"
+
+static char	*read_line(int fd, char *buffer, char *backup)
+{
+	int		readsize;
+	char	*tmp;
+
+	while (1)
+	{
+		readsize = read(fd, buffer, BUFFER_SIZE);
+		if (readsize == -1)
+			return (0);
+		else if (readsize == 0)
+			break ;
+		buffer[readsize] = '\0';
+		if (!backup)
+			backup = gnl_strdup("");
+		tmp = backup;
+		backup = gnl_strjoin(tmp, buffer);
+		if (!backup)
+			return (NULL);
+		if (backup[0] == '\0')
+			return (NULL);
+		free(tmp);
+		tmp = NULL;
+		if (gnl_strchr(buffer, '\n'))
+			break ;
+	}
+	return (backup);
+}
+
+static char	*cut_back(char *backup)
+{
+	int		i;
+	char	*res;
+
+	i = 0;
+	while (backup[i] != '\n' && backup[i] != '\0')
+		i++;
+	if (backup[i] == '\0')
+		return (0);
+	res = gnl_substr(backup, i + 1, gnl_strlen(backup) - i);
+	if (!res)
+		return (NULL);
+	if (res[0] == '\0')
+	{
+		free(res);
+		res = NULL;
+		return (NULL);
+	}
+	backup[i + 1] = '\0';
+	return (res);
+}
+
+char	*get_next_line(int fd)
+{
+	char		*line;
+	char		*buffer;
+	static char	*backup;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
+	if (!buffer)
+		return (NULL);
+	line = read_line(fd, buffer, backup);
+	free(buffer);
+	buffer = NULL;
+	if (!line)
+	{
+		free(backup);
+		backup = NULL;
+		return (NULL);
+	}
+	backup = cut_back(line);
+	return (line);
+}
