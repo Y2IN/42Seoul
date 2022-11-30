@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:47:18 by yje               #+#    #+#             */
-/*   Updated: 2022/11/23 19:59:28 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/30 22:07:15 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int args_init(t_argu *arg, int argc, char **argv)
 		if (arg->philosopher_must_eat <= 0)
 			return (1);
 		if (arg->number_of_philosophers == 1)
-			arg->time_to_eat == 0;
+			arg->time_to_eat = 0;
 	}
-	if (init_mutex(arg))
-		return (1);
+	// if (init_mutex(arg))
+	// 	return (1);
 	return (0);
 }
 
