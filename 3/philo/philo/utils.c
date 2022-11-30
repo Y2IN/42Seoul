@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:23:24 by yje               #+#    #+#             */
-/*   Updated: 2022/11/28 21:20:56 by yje              ###   ########.fr       */
+/*   Updated: 2022/11/30 22:11:14 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ int	ft_atoi(const char *str)
 		result += str[i] - '0';
 		i++;
 	}
+	if (result*sign > INT_MAX || result*sign < INT_MIN)
+		return(FALSE);
 	return (result * sign);
 }
