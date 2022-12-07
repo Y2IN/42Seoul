@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:23:24 by yje               #+#    #+#             */
-/*   Updated: 2022/11/30 22:11:14 by yje              ###   ########.fr       */
+/*   Updated: 2022/12/07 17:07:14 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,14 @@ int	ft_atoi(const char *str)
 	if (result*sign > INT_MAX || result*sign < INT_MIN)
 		return(FALSE);
 	return (result * sign);
+}
+
+long long	get_time(void)
+{
+	struct timeval	time;
+	long long		now_time;
+
+	gettimeofday(&time, 0);
+	now_time = time.tv_usec / 1000 + time.tv_sec * 1000;
+	return (now_time);
 }
