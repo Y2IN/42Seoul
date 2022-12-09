@@ -6,17 +6,23 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:47:50 by yje               #+#    #+#             */
-/*   Updated: 2022/12/07 17:12:53 by yje              ###   ########.fr       */
+/*   Updated: 2022/12/09 18:12:18 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	philo_start(t_argu *arg, t_philo *philo)
+void	monitoring(t_argu *arg, t_philo *philo)
+{
+	int i;
+	
+}
+int	simulation_start(t_argu *arg, t_philo *philo)
 {
 	int		i;
 
 	i = 0;
+	arg->start_time = get_time();//
 	while (i < arg->number_of_philosophers)
 	{	
 		philo[i].last_eat_time = get_time();
@@ -24,7 +30,7 @@ int	philo_start(t_argu *arg, t_philo *philo)
 			return (1);
 		i++;
 	}
-	ph_check_finish(arg, philo);
+	monitoring(arg, philo);
 	i = 0;
 	while (i < arg->number_of_philosophers)
 		pthread_join(philo[i++].thread, NULL);
@@ -33,5 +39,13 @@ int	philo_start(t_argu *arg, t_philo *philo)
 
 void	*ph_thread(void *argv)
 {
+	t_argu		*arg;
+	t_philo		*philo;
 
+	philo = argv;
+	arg = philo->arg;
+	if (philo->id % 2 == 0)
+		usleep(800);
+	return (0);
 }
+

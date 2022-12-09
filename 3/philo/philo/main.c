@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:47:18 by yje               #+#    #+#             */
-/*   Updated: 2022/12/07 17:00:20 by yje              ###   ########.fr       */
+/*   Updated: 2022/12/09 18:12:23 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,32 @@ int args_init(t_argu *arg, int argc, char **argv)
 		if (arg->number_of_philosophers == 1)
 			arg->time_to_eat = 0;
 	}
-	// if (init_mutex(arg))
-	// 	return (1);
+	if (init_mutex(arg))
+		return (TRUE);
 	return (0);
 }
 
-// int philo_init(t_philo *philo, t_argu *arg)
-// {
-	
-// }
+int	init_philo(t_philo **philo, t_argu *arg)
+{
+	int	i;
+
+	i = 0;
+	*philo = malloc(sizeof(t_philo) * arg->number_of_philosophers);
+	if (!(*philo))
+		return (1);
+	while (i < arg->number_of_philosophers)
+	{
+		(*philo)[i].arg = arg;
+		(*philo)[i].id = i;
+		(*philo)[i].left = i;
+		(*philo)[i].right = (i + 1) % arg->number_of_philosophers;
+		//원형 테이블
+		(*philo)[i].last_eat_time = get_time();
+		(*philo)[i].eat_count = 0;
+		i++;
+	}
+	return (0);
+}
 
 int main(int argc, char **argv)
 {
@@ -55,9 +72,9 @@ int main(int argc, char **argv)
 	memset(&arg, 0, sizeof(t_argu));
 	if (args_init(&arg, argc, argv))
 		return(print_error("arguments init failed"));
-	// if (philo_init(&philo, &arg))
-	// 	return(print_error("philos init failed"));
-	// if (philo_start(&arg, philo))
-	// 	return (print_error("philo start failed"));
+	if (philo_init(&philo, &arg))
+		return(print_error("philos init failed"));
+	if (simulation_start(&arg, philo))
+		return (print_error("philo start failed"));
 	return (0);
 }
