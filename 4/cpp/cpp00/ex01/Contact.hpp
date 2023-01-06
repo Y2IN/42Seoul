@@ -6,34 +6,39 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 13:10:36 by yje               #+#    #+#             */
-/*   Updated: 2023/01/03 16:19:27 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/06 18:39:14 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_H_
-# define CONTACT_H_
+#ifndef CONTACTHPP
+# define CONTACTHPP
 
-#include <iostream>
+#include <string>
 
-class Contact {
-private:
-	std::string firstName;
-    std::string lastName;
-    std::string nickName;
-    std::string phoneNumber;
-    std::string darkestSecret;
-
-public:
-	Contact();
-	Contact(std::string first_name,
-		std::string last_name,
-		std::string nickname,
-		std::string phone_number,
-		std::string darkest_secret);
-	std::string get_first_name();
-	std::string get_last_name();
-	std::string get_nickname();
-	~Contact();
+class Contact
+{
+	private:
+		std::string _firstName;
+		std::string _lastName;
+		std::string _nickName;
+		std::string _phoneNumber;
+		std::string _darkestSecret;
+	public:
+		Contact();
+		~Contact();
+		Contact(		
+			std::string firstName,
+			std::string lastName,
+			std::string nickName,
+			std::string phoneNumber,
+			std::string darkestSecret
+		);
+		std::string getFirstName() const;
+		std::string getLastName() const;
+		std::string getNickName() const;
+		std::string getPhoneNumber() const;
+		std::string getDarkestSecret() const;
 
 };
+
 #endif

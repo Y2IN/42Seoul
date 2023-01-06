@@ -6,17 +6,29 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 13:06:25 by yje               #+#    #+#             */
-/*   Updated: 2022/12/30 13:10:24 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/06 18:17:57 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_H_
-# define PHONEBOOK_H_
+#ifndef PHONEBOOKHPP
+# define PHONEBOOKHPP
 
-#include <string>
+#include "Contact.hpp"
 #include <iostream>
+#include <string>
+class PhoneBook
+{
+	private:
+		int idx;
+		Contact contact[8];
+		Contact CreateContact();
 
-class PhoneBook {
-} ;
+
+	public:
+		void Add();
+		void Search() const;
+		PhoneBook();
+		~PhoneBook();
+};
 
 #endif

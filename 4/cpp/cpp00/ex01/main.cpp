@@ -6,36 +6,14 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 15:13:35 by yje               #+#    #+#             */
-/*   Updated: 2022/12/30 15:17:56 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/06 18:32:59 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Contact.hpp"
 
-int	main(void)
-{
-	std::string	cmd;
+int main() {
+	Contact c = Contact("1", "2", "3", "4", "5");
 
-	while (true)
-	{
-		std::cout << "please enter your command : (ADD, SEARCH, EXIT)" << std::endl;
-		std::cin >> cmd;
-		if (cmd == "ADD")
-		{
-			
-		}
-		else if (cmd == "SEARCH")
-		{
-			
-		}
-		else if (cmd == "EXIT")
-		{
-			break ;
-		}
-		else
-		{
-			std::cout << "sorry, command not found" << std::endl;
-		}
-	}
-	return (0);
+	c.getFirstName();
 }
