@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:25:46 by yje               #+#    #+#             */
-/*   Updated: 2023/01/06 18:30:54 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/17 09:51:32 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ Contact::Contact
 	std::string nickName,
 	std::string phoneNumber,
 	std::string darkestSecret
-) : _firstName(firstName), _lastName(lastName), _nickName(nickName), _phoneNumber(phoneNumber), _darkestSecret(darkestSecret) 
-{	
+) : _firstName(firstName), _lastName(lastName), _nickName(nickName), _phoneNumber(phoneNumber), _darkestSecret(darkestSecret) {
 }
 
 std::string Contact::getFirstName(void) const
