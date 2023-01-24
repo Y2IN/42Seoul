@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:25:46 by yje               #+#    #+#             */
-/*   Updated: 2023/01/17 09:51:32 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/24 17:59:17 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,30 @@ Contact::Contact
 ) : _firstName(firstName), _lastName(lastName), _nickName(nickName), _phoneNumber(phoneNumber), _darkestSecret(darkestSecret) {
 }
 
-std::string Contact::getFirstName(void) const
+Contact::Contact() {
+	*this = Contact("", "", "", "", "");
+}
+
+Contact::~Contact() {
+}
+
+std::string Contact::getFirstName(void)
 {
 	return(_firstName);
 }
-std::string Contact::getLastName(void) const
+std::string Contact::getLastName(void)
 {
 	return(_lastName);
 }
-std::string Contact::getNickName(void) const
+std::string Contact::getNickName(void)
 {
 	return(_nickName);
 }
-std::string Contact::getPhoneNumber(void) const
+std::string Contact::getPhoneNumber(void)
 {
 	return(_phoneNumber);
 }
-std::string Contact::getDarkestSecret(void) const
+std::string	Contact::getDarkestSecret(void) 
 {
 	return(_darkestSecret);
 }

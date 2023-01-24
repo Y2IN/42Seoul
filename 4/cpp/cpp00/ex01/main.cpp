@@ -6,13 +6,13 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 15:13:35 by yje               #+#    #+#             */
-/*   Updated: 2023/01/17 12:08:42 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/24 20:23:11 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "PhoneBook.hpp"
-#include <string>
+#include "PhoneBook.hpp"
 #include <iostream>
+#include <string>
 
 int main() {
 	PhoneBook phonebook = PhoneBook();
@@ -24,12 +24,12 @@ int main() {
 	{
 		if (cmd == "ADD")
 		{
-			phonebook.AddContact();
+			phonebook.Add();
 			std::cout << "command> ";
 		}
 		else if (cmd == "SEARCH")
 		{
-			phonebook.search();
+			phonebook.Search();
 			std::cout << "command> ";
 		}
 		else if(cmd == "EXIT")
@@ -44,7 +44,7 @@ int main() {
 		}
 	}
 	if (std::cin.eof()) {
-    std::cout << "EOF -> Program Exit" << std::endl;
+    std::cout << "Enter EOF. Program Exit." << std::endl;
     return (0);
 	}
 	return (0);

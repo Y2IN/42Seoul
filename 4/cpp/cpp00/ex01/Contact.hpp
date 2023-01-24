@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 13:10:36 by yje               #+#    #+#             */
-/*   Updated: 2023/01/06 18:39:14 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/24 18:01:49 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACTHPP
-# define CONTACTHPP
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
 #include <string>
 
@@ -33,11 +33,11 @@ class Contact
 			std::string phoneNumber,
 			std::string darkestSecret
 		);
-		std::string getFirstName() const;
-		std::string getLastName() const;
-		std::string getNickName() const;
-		std::string getPhoneNumber() const;
-		std::string getDarkestSecret() const;
+		std::string getFirstName();
+		std::string getLastName();
+		std::string getNickName();
+		std::string getPhoneNumber();
+		std::string getDarkestSecret();
 
 };
 

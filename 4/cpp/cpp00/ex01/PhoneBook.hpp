@@ -3,34 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 13:06:25 by yje               #+#    #+#             */
-/*   Updated: 2023/01/17 10:30:15 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/24 17:10:17 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOKHPP
-# define PHONEBOOKHPP
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
-#include "Contact.hpp"
 #include <iostream>
 #include <string>
-class PhoneBook
-{
-	private:
-		int idx;
-		void    DisplaySearchList(std::string contactInfo);
-		void    DisplayContact();
-		Contact contact[8];
-		Contact CreateContact();
+#include "Contact.hpp"
 
+class PhoneBook {
+  private:
+    Contact CreateContact();
+    Contact contact[8];
+    int     idx;
+    void    DisplaySearchList(std::string contactInfo);
+    void    DisplayContact();
+    void    ValidateInputIndex(std::string inputIndex);
 
-	public:
-		void Add();
-		void Search();
-		PhoneBook();
-		~PhoneBook();
+  public:
+    PhoneBook();
+    ~PhoneBook();
+    void  Add();
+    void  Search();
 };
 
 #endif
