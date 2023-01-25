@@ -13,6 +13,7 @@
 
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
+#include <iomanip>
 // #include<string.h>
 
 PhoneBook::PhoneBook()
@@ -78,10 +79,10 @@ void PhoneBook::DisplaySearchList(std::string contactInfo){
   if (contactSize < 10) {
     for (int i = 0; i < 12 - contactSize - 1; i++)
       std::cout << " ";
-    std::cout << contactInfo << " │";
+    std::cout << std::setw(contactSize)<< contactInfo << " │";
   } 
   else if (contactSize == 10) {
-    std::cout << " " << contactInfo << " │";
+    std::cout << " " << std::setw(10)<< contactInfo << " │";
   }
   else {
     std::cout<< " ";
