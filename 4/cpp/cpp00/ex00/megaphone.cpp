@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yje <yje@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 12:33:44 by yje               #+#    #+#             */
-/*   Updated: 2022/12/30 12:52:36 by yje              ###   ########.fr       */
+/*   Updated: 2023/01/25 10:24:49 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 	else {
 		for (int i = 1; i < argc; i++)
 		{
-			for (int j = 0; j < argc; j++)
+			for (int j = 0; argv[i][j]; j++)
 				std::cout << static_cast<char>(toupper(argv[i][j]));
 		}
 		std::cout << std::endl;
