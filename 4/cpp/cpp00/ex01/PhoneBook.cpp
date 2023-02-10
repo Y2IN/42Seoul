@@ -21,7 +21,7 @@ PhoneBook::PhoneBook()
 }
 
 PhoneBook::~PhoneBook()
-{	
+{
 }
 
 Contact PhoneBook::CreateContact() {
@@ -36,7 +36,7 @@ Contact PhoneBook::CreateContact() {
   for (int i = 0; i < 5; i++) {
     std::cout << coutList[i];
     std::getline(std::cin, contactInfo[i]);
-    while (contactInfo[i].length() <= 0){
+    while (!std::cin.eof() && contactInfo[i].length() <= 0){
       std::cout << "Can't be empty" << std::endl;
       std::cout << coutList[i];
       std::getline(std::cin, contactInfo[i]);
@@ -80,14 +80,14 @@ void PhoneBook::DisplaySearchList(std::string contactInfo){
     for (int i = 0; i < 12 - contactSize - 1; i++)
       std::cout << " ";
     std::cout << std::setw(contactSize)<< contactInfo << " │";
-  } 
+  }
   else if (contactSize == 10) {
     std::cout << " " << std::setw(10)<< contactInfo << " │";
   }
   else {
     std::cout<< " ";
     for (int i = 0; i < 9; i++) {
-      std::cout << contactInfo[i];   
+      std::cout << contactInfo[i];
     }
     std::cout << ". │";
   }
