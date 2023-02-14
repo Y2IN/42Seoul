@@ -6,7 +6,7 @@
 #    By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/25 11:57:54 by yje               #+#    #+#              #
-#    Updated: 2023/01/25 12:21:52 by yje              ###   ########.fr        #
+#    Updated: 2023/02/14 17:46:52 by yje              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,9 @@ CFLAGS			= -Wall -Wextra -Werror -std=c++98
 
 # NOTE : Add to SRC here
 # ------------------------------------------------------ #
-# SRC = $(addsuffix .c, $(addprefix $(MAIN_DIR), $(MAIN_SRC))) 
+# SRC = $(addsuffix .c, $(addprefix $(MAIN_DIR), $(MAIN_SRC)))
 
-SRC = main.cpp Zombie.cpp #randomChump.cpp newZombie.cpp
+SRC = main.cpp Zombie.cpp randomChump.cpp newZombie.cpp
 
 # ------------------------------------------------------ #
 

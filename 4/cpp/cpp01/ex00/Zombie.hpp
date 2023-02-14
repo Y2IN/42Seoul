@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 12:00:16 by yje               #+#    #+#             */
-/*   Updated: 2023/01/25 12:25:04 by yje              ###   ########.fr       */
+/*   Updated: 2023/02/14 17:08:56 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Zombie {
         void announce(void);
 };
 
-// Zombie* newZombie(std::string name);
+Zombie* newZombie(std::string name);
+void randomChump(std::string name);
 
 #endif

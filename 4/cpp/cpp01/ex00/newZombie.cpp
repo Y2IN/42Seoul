@@ -6,16 +6,14 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 12:02:51 by yje               #+#    #+#             */
-/*   Updated: 2023/01/25 12:21:40 by yje              ###   ########.fr       */
+/*   Updated: 2023/02/14 17:06:29 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef ZOMBIE_H__
-# define ZOMBIE_H__
+#include "Zombie.hpp"
 
-Zombie* newZombie(std::string name)
+Zombie *newZombie(std::string name)
 {
-    
+	return (new Zombie(name));
 }
 
-#endif
