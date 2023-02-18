@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 12:06:04 by yje               #+#    #+#             */
-/*   Updated: 2023/02/14 17:47:15 by yje              ###   ########.fr       */
+/*   Updated: 2023/02/16 15:59:40 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int main(void)
       // It creates a zombie, name it, and the zombie announces itself.
     randomChump("random");
     // delete newZ;
-    system("leaks Zombie");
+    // system("leaks Zombie");
     return (0);
 }
