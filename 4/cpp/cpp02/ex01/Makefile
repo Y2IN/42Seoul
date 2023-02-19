@@ -6,7 +6,7 @@
 #    By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/18 18:38:40 by yje               #+#    #+#              #
-#    Updated: 2023/02/18 19:51:40 by yje              ###   ########.fr        #
+#    Updated: 2023/02/19 16:10:40 by yje              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,14 +64,14 @@ $(NAME): $(OBJ)
 
 clean:
 	@rm -f $(OBJ)
-	@echo "$(CUSTOM)ex00 obj files has been deleted.$(DEF_COLOR)"
+	@echo "$(CUSTOM)ex01 obj files has been deleted.$(DEF_COLOR)"
 
 fclean:
 	@rm -f $(OBJ)
 	@rm -f $(NAME)
-	@echo "$(CUSTOM)ex00 archive files has been deleted.$(DEF_COLOR)"
+	@echo "$(CUSTOM)ex01 archive files has been deleted.$(DEF_COLOR)"
 
 re: fclean all
-	@echo "$(CUSTOM)Cleaned and rebuilt ex00.$(DEF_COLOR)"
+	@echo "$(CUSTOM)Cleaned and rebuilt ex01.$(DEF_COLOR)"
 
 .PHONY: all clean fclean re
