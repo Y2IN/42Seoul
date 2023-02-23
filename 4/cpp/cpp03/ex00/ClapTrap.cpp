@@ -34,7 +34,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& origin) {
 	this->_name	= origin._name;
 	this->_hitPoints = origin._hitPoints;
 	this->_attackDamage = origin._attackDamage;
-	this->_energyPoint = origin._energyPoint;
+	this->_energyPoints = origin._energyPoints;
 	return *this;
 }
 

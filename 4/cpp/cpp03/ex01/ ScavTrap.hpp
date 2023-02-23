@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*    ScavTrap.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 17:44:34 by yje               #+#    #+#             */
-/*   Updated: 2023/02/23 17:51:35 by yje              ###   ########.fr       */
+/*   Created: 2023/02/23 16:33:38 by yje               #+#    #+#             */
+/*   Updated: 2023/02/23 17:50:43 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-int main()
-{
-	ScavTrap a("a");
-	ScavTrap b(a);
-	ScavTrap c;
-	c = b;
+#ifndef SCAVTRAP_H_
+#define SCAVTRAP_H_
 
-	a.attack("b");
-	a.beRepaired(200);
-	a.guardGate();
-	a.takeDamage(99);
-	a.attack("b");
 
-}
+#include "ClapTrap.hpp"
+
+class ScavTrap {
+	public:
+		ScavTrap(void);
+		ScavTrap(std::string name);
+		ScavTrap(const ScavTrap& origin);
+		ScavTrap& operator=(const ScavTrap& origin);
+		~ScavTrap();
+		void guardGate();
+};
+
+#endif
