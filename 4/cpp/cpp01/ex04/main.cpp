@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:50:42 by yje               #+#    #+#             */
-/*   Updated: 2023/02/18 15:26:18 by yje              ###   ########.fr       */
+/*   Updated: 2023/03/03 17:01:50 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ int main(int argc, char **argv)
 	std::string findline = argv[2]; //s1
 	std::string changeline = argv[3]; //s2
 	if (findline.empty())
+	{
 		std::cerr << "Error : Invalid s1" << std::endl;
+		return (1);
+	}
 	while (std::getline(ifs, readline)) //file -> readline에 저장
 	{
 		size_t pos = 0;
