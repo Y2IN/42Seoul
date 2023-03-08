@@ -73,10 +73,12 @@ void ClapTrap::attack(const std::string& target) {
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {
-	if (this->_hitPoints > 0)
+	if (this->_hitPoints < amount)
+		this->_hitPoints = 0;
+	else if (this->_hitPoints > 0)
 		this->_hitPoints -= amount;
 	std::cout << this->_name << " is attacked " << amount << " damage" << std::endl;
-	if (this->_hitPoints <= 0)
+	if (this->_hitPoints == 0)
 		std::cout << this->_name << " HP is 0." << std::endl;
 }
 
@@ -91,7 +93,5 @@ void ClapTrap::beRepaired(unsigned int amount){
 	}
 	_hitPoints += amount;
 	std::cout << this->_name << " recovered " << amount << " hitPoint" << std::endl;
+	this->_energyPoints--;
 }
-
-
-
