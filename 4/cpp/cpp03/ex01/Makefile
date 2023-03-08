@@ -6,7 +6,7 @@
 #    By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 16:07:15 by yje               #+#    #+#              #
-#    Updated: 2023/02/23 17:51:13 by yje              ###   ########.fr        #
+#    Updated: 2023/03/08 14:30:22 by yje              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ CFLAGS			= -Wall -Wextra -Werror -std=c++98
 # SRC = $(addsuffix .c, $(addprefix $(MAIN_DIR), $(MAIN_SRC)))
 
 SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
-
 # ------------------------------------------------------ #
 
 OBJ = $(SRC:cpp=o)
