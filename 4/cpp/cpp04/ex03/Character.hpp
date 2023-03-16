@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 19:12:01 by yje               #+#    #+#             */
-/*   Updated: 2023/03/15 21:08:05 by yje              ###   ########.fr       */
+/*   Updated: 2023/03/16 22:22:40 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ class Character: public ICharacter {
 	private :
 		std::string _name;
 		AMateria* _inventory[4];
+		int         _floorSize;    
+	    AMateria*   _floor[10];
+
+
 	public :
 		Character();
 		Character(std::string const& name);
@@ -30,6 +34,8 @@ class Character: public ICharacter {
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);
 		AMateria const *getMateriaByIdx(int idx) const;
+		void floor(int idx);
+		void cleanFloor();
 };
 
 #endif

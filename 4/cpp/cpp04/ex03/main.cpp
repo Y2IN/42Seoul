@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 19:16:15 by yje               #+#    #+#             */
-/*   Updated: 2023/03/15 21:19:59 by yje              ###   ########.fr       */
+/*   Updated: 2023/03/16 22:20:34 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,12 @@
 
 // 		ICharacter* me = new Character("me");
 // 		AMateria* tmp;
+// 		std::cout << std::endl;
 
 // 		tmp = src->createMateria("ice");
 // 		me->equip(tmp);
+// 		std::cout << std::endl;
+
 // 		tmp = src->createMateria("cure");
 // 		me->equip(tmp);
 
@@ -88,17 +91,15 @@ int main() {
 		std::cout << std::endl;
 
 		for (int i = 0; i < 4; i++) {
+			std::cout << i << "\n";
 			me->unequip(i);
 		}
 
 		delete bob;
-		// bob = NULL;
 
 		delete me;
-		// me = NULL;
 
 		delete src;
-		// src = NULL;
 	}
   system("leaks a.out");
   return 0;

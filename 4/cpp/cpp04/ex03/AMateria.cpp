@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 19:20:46 by yje               #+#    #+#             */
-/*   Updated: 2023/03/15 21:01:22 by yje              ###   ########.fr       */
+/*   Updated: 2023/03/16 21:37:03 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 AMateria::AMateria()
 	:_type("") {
-		std::cout<< "AMateria constructor called" << std::endl;
+		std::cout<< " AMateria constructor called" << std::endl;
 }
 
 AMateria::AMateria(std::string const& type)
