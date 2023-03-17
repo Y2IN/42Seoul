@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:20:21 by yje               #+#    #+#             */
-/*   Updated: 2023/03/14 20:59:19 by yje              ###   ########.fr       */
+/*   Updated: 2023/03/17 15:25:59 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include <iostream>
 #include <string>
-#include <iomanip>
 
 class Brain {
 	private:

@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 16:20:00 by yje               #+#    #+#             */
-/*   Updated: 2023/03/14 17:09:58 by yje              ###   ########.fr       */
+/*   Updated: 2023/03/17 15:26:15 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,13 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
+void bye(){
+	system("leaks a.out");
+}
+
 int main()
 {
+	atexit(bye);
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
@@ -51,10 +56,9 @@ int main()
 	wrongCat->makeSound();
 
 	std::cout << std::endl;
-
+	delete wrongMeta;
 	delete wrongAnimal;
 	delete wrongCat;
 
 	return 0;
-
 }

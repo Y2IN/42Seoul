@@ -6,46 +6,10 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 19:16:15 by yje               #+#    #+#             */
-/*   Updated: 2023/03/16 22:20:34 by yje              ###   ########.fr       */
+/*   Updated: 2023/03/17 15:27:11 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-// #include "AMateria.hpp"
-// #include "MateriaSource.hpp"
-// #include "ICharacter.hpp"
-// #include "Character.hpp"
-// #include "Ice.hpp"
-// #include "Cure.hpp"
-
-// int main() {
-
-// 	{
-// 		IMateriaSource* src = new MateriaSource();
-
-// 		src->learnMateria(new Ice());
-// 		src->learnMateria(new Cure());
-
-// 		ICharacter* me = new Character("me");
-// 		AMateria* tmp;
-// 		std::cout << std::endl;
-
-// 		tmp = src->createMateria("ice");
-// 		me->equip(tmp);
-// 		std::cout << std::endl;
-
-// 		tmp = src->createMateria("cure");
-// 		me->equip(tmp);
-
-// 		ICharacter* bob = new Character("bob");
-// 		me->use(0, *bob);
-// 		me->use(1, *bob);
-// 		delete bob;
-// 		delete me;
-// 		delete src;
-// 	}
-// 	return 0;
-// }
 #include "AMateria.hpp"
 #include "MateriaSource.hpp"
 #include "ICharacter.hpp"
@@ -53,8 +17,13 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 
+// void bye() {
+// 	system("leaks a.out");
+// }
+
 int main() {
 	{
+		// atexit(bye);
 		IMateriaSource* src = new MateriaSource();
 		std::cout << std::endl;
 
@@ -101,6 +70,6 @@ int main() {
 
 		delete src;
 	}
-  system("leaks a.out");
+//   system("leaks a.out");
   return 0;
 }
