@@ -6,7 +6,7 @@
 #    By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/17 14:05:22 by yje               #+#    #+#              #
-#    Updated: 2023/03/19 00:41:22 by yje              ###   ########.fr        #
+#    Updated: 2023/03/19 22:05:47 by yje              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ CUSTOM = \033[38;5;135m
 $(NAME): $(OBJ)
 	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(GREEN)╔══════════════════════════════════════════╗$(DEF_COLOR)"
-	@echo "$(GREEN)║      cpp_04 ex01 compile finished.       ║$(DEF_COLOR)"
+	@echo "$(GREEN)║      cpp_05 ex00 compile finished.       ║$(DEF_COLOR)"
 	@echo "$(GREEN)╚══════════════════════════════════════════╝$(DEF_COLOR)"
 
 %.o: %.cpp
@@ -64,14 +64,14 @@ $(NAME): $(OBJ)
 
 clean:
 	@rm -f $(OBJ)
-	@echo "$(CUSTOM)ex01 obj files has been deleted.$(DEF_COLOR)"
+	@echo "$(CUSTOM)ex00 obj files has been deleted.$(DEF_COLOR)"
 
 fclean:
 	@rm -f $(OBJ)
 	@rm -f $(NAME)
-	@echo "$(CUSTOM)ex01 archive files has been deleted.$(DEF_COLOR)"
+	@echo "$(CUSTOM)ex00 archive files has been deleted.$(DEF_COLOR)"
 
 re: fclean all
-	@echo "$(CUSTOM)Cleaned and rebuilt ex01.$(DEF_COLOR)"
+	@echo "$(CUSTOM)Cleaned and rebuilt ex00.$(DEF_COLOR)"
 
 .PHONY: all clean fclean re
