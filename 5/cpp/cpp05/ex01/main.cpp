@@ -14,6 +14,12 @@
 
 int main()
 {
+	// {
+	// 	Form form1("abc", 10, 1);
+	// 	Form form2("form2", 101, 50);
+	// 	form2 = form1;
+	// 	std::cout << form2 << std::endl;
+	// }
 	{
 		std::cout << "---------TEST1---------" << std::endl;
 		try
