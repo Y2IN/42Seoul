@@ -6,7 +6,7 @@
 /*   By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 01:28:33 by yje               #+#    #+#             */
-/*   Updated: 2023/03/20 02:03:14 by yje              ###   ########.fr       */
+/*   Updated: 2023/03/20 10:48:00 by yje              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-void leaks() { system("leaks a.out"); }
+// void leaks() { system("leaks a.out"); }
 
 void shrubberyTest(Bureaucrat b1, Bureaucrat b4) {
   std::cout << "ShrubberyCreateForm test" << std::endl;
@@ -75,10 +75,10 @@ void presidentialTest(Bureaucrat b1, Bureaucrat b2) {
   std::cout << std::endl;
   std::cout << *f1 << *f2 << std::endl; 
   std::cout << std::endl;
-  std::cout << "Grade 70, can sign Pardon Form?" << std::endl;
+  std::cout << "can sign Pardon Form?" << std::endl;
   b2.signForm(*f1);
   std::cout << std::endl;
-  std::cout << "Grade 70, can execute Pardon?" << std::endl;
+  std::cout << "can execute Pardon Form?" << std::endl;
   b2.executeForm(*f1);
   std::cout << std::endl;
   std::cout << "Not signed, can execute Pardon?" << std::endl;
@@ -96,12 +96,14 @@ int main(void) {
   Bureaucrat b1("Admin", 1);
   Bureaucrat b2("yje", 15);
   Bureaucrat b3("yein", 70);
-  Bureaucrat b4("chanwoong", 140);
+  Bureaucrat b4("111111", 140);
 
   std::cout << b1 << b2 << b3 << b4 << std::endl;
   shrubberyTest(b1, b4);
+  std::cout << std::endl;
   robotomyTest(b1, b3);
+  std::cout << std::endl;
   presidentialTest(b1, b2);
-  atexit(leaks);
+  // atexit(leaks);
   return 0;
 }
