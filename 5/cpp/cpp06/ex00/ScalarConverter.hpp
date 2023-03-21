@@ -2,15 +2,15 @@
 # define SCALARCONVERTER_HPP
 
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <cmath>
 
 class ScalarConverter {
     private:
+      //A default constructor
       ScalarConverter();
     public:
-      //A default constructor
-      ScalarConverter(const std::string &);
       //A copy constructor
       ScalarConverter(const ScalarConverter &);
       // A assignment operator overload
@@ -18,6 +18,7 @@ class ScalarConverter {
       // A destructor
       ~ScalarConverter();
       static void convert(const std::string& input);
+      static int	type(const std::string& str);
 };
 
 #endif 

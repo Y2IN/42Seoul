@@ -6,11 +6,11 @@
 #    By: yje <yje@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/19 23:32:12 by yje               #+#    #+#              #
-#    Updated: 2023/03/21 12:00:29 by yje              ###   ########.fr        #
+#    Updated: 2023/03/22 00:09:34 by yje              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= convert
+NAME			= Serializer
 
 # CXXFLAGS		= -Wall -Wextra -Werror -g3 -fsanitize=address
 CXXFLAGS			= -Wall -Wextra -Werror -std=c++98
@@ -27,7 +27,7 @@ CXXFLAGS			= -Wall -Wextra -Werror -std=c++98
 # ------------------------------------------------------ #
 # SRC = $(addsuffix .c, $(addprefix $(MAIN_DIR), $(MAIN_SRC))) 
 
-SRC = main.cpp ScalarConverter.cpp
+SRC = main.cpp Serializer.cpp
 
 # ------------------------------------------------------ #
 
@@ -54,7 +54,7 @@ CUSTOM = \033[38;5;135m
 $(NAME): $(OBJ)
 	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(GREEN)╔══════════════════════════════════════════╗$(DEF_COLOR)"
-	@echo "$(GREEN)║      cpp_06 ex00 compile finished.       ║$(DEF_COLOR)"
+	@echo "$(GREEN)║      cpp_06 ex01 compile finished.       ║$(DEF_COLOR)"
 	@echo "$(GREEN)╚══════════════════════════════════════════╝$(DEF_COLOR)"
 
 %.o: %.cpp
@@ -64,14 +64,14 @@ $(NAME): $(OBJ)
 
 clean:
 	@rm -f $(OBJ)
-	@echo "$(CUSTOM)ex00 obj files has been deleted.$(DEF_COLOR)"
+	@echo "$(CUSTOM)ex01 obj files has been deleted.$(DEF_COLOR)"
 
 fclean:
 	@rm -f $(OBJ)
 	@rm -f $(NAME)
-	@echo "$(CUSTOM)ex00 archive files has been deleted.$(DEF_COLOR)"
+	@echo "$(CUSTOM)ex01 archive files has been deleted.$(DEF_COLOR)"
 
 re: fclean all
-	@echo "$(CUSTOM)Cleaned and rebuilt ex00.$(DEF_COLOR)"
+	@echo "$(CUSTOM)Cleaned and rebuilt ex01.$(DEF_COLOR)"
 
 .PHONY: all clean fclean re
