@@ -10,7 +10,6 @@ int main() {
   ::iter(s, 6, ::print);
   std::cout << std::endl;
   std::cout << "Int Iteration : ";
-//   ::iter(i, 10, ::mul);
   ::iter(i, 10, ::print);
   std::cout << std::endl;
   std::cout << "Double Iteration : ";
