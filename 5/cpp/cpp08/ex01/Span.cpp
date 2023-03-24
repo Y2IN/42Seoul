@@ -4,26 +4,26 @@
 # include <iostream>
 # include <vector>
 
-Span::Span() {
-    this->_max_size = 0;
+Span::Span() : _vector(0){
+    this->_vector.reserve(0);
 }
 
-Span::Span(unsigned int n) {
-    this->_max_size = n;
+Span::Span(unsigned int n) : _vector(0){
+    this->_vector.reserve(n);   
 }
-
-Span::Span(const Span &origin) {
-    this->_max_size = origin._max_size;
+// _vector(0, 0) -> (초기크기, 정수)
+Span::Span(const Span &origin) : _vector(0) {
+    this->_vector.reserve(origin.getVector().capacity()); //reserve -> 크기 변경해주는 함수
+    if (this->_vector.capacity() != 0)
+        std::copy(origin.getVector().begin(), origin.getVector().end(), std::back_inserter(this->_vector));
 }
 
 Span &Span::operator=(const Span& origin) {
     if (this != &origin) {
         this->_vector.clear();
-        std::vector<const int>::iterator iter;
-        for (iter = this->_vector.begin(); iter != origin._vector.end(); iter++) {
-            this->_vector.push_back(*iter);
-        }
-        this->_max_size = origin._max_size;
+        this->_vector.reserve(origin.getVector().capacity());
+        if (this->_vector.capacity() != 0)
+            std::copy(origin.getVector().begin(), origin.getVector().end(), std::back_inserter(this->_vector));
     }
     return *this;
 }
@@ -31,8 +31,40 @@ Span &Span::operator=(const Span& origin) {
 Span::~Span() {}
 
 void    Span::addNumber(int num) {
-    if (this->_vector.size() >= this->_max_size) {
+    if (this->_vector.size() >= this->_vector.capacity()) {
         throw CanNotStoreNumber();
     }
     this->_vector.push_back(num);
+}
+
+std::size_t Span::longestSpan() {
+  if (this->_vector.size() <= 1) 
+    throw NotEnoughElement();
+  return *std::max_element(this->_vector.begin(), this->_vector.end()) - *std::min_element(this->_vector.begin(), this->_vector.end());
+}
+
+size_t Span::shortestSpan() {
+    if (this->_vector.size() <= 1) {
+        throw NotEnoughElement();
+    }
+    std::vector<int> sortedVector = this->_vector;
+    std::sort(sortedVector.begin(), sortedVector.end());
+    int min = INT_MAX;
+    for (std::vector<int>::iterator it = sortedVector.begin(); it != sortedVector.end() - 1; it++) 
+    {
+        min = std::min(min, *(it + 1) - *it);
+    }
+    return min;;
+}
+
+const char* Span::CanNotStoreNumber::what() const throw() {
+  return "Span can't add number. Not enough capacity.";
+}
+
+const char* Span::NotEnoughElement::what() const throw() {
+  return "Not enough element";
+}
+
+const std::vector<int>& Span::getVector() const {
+  return this->_vector;
 }

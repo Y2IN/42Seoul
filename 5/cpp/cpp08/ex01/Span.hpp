@@ -8,7 +8,6 @@
 
 class Span {
 	private :
-        unsigned int _max_size;
 		std::vector<int> _vector;
 		Span();
 	public:
@@ -21,9 +20,17 @@ class Span {
 		size_t longestSpan();
 		void addNumber(int num);
 
-		size_t getMaxsize();
-
-
+		template <typename T>
+		void addManyNumbers(T& container) {
+			if (std::distance(container.begin(), container.end()) > static_cast<int>(this->_vector.capacity() - this->_vector.size())) 
+				throw CanNotStoreNumber();
+			typename T::iterator iter = container.begin();
+			while (iter != container.end()) {
+				this->_vector.push_back(*iter);
+				++iter;
+		}
+    }
+		const std::vector<int>& getVector() const;
 		class CanNotStoreNumber : public std::exception {
 			public:
 				const char* what() const throw();

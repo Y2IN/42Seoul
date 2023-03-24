@@ -15,7 +15,7 @@ CXXFLAGS			= -Wall -Wextra -Werror -std=c++98
 # ------------------------------------------------------ #
 # SRC = $(addsuffix .c, $(addprefix $(MAIN_DIR), $(MAIN_SRC)))
 
-SRC = main.cpp span.cpp
+SRC = main.cpp Span.cpp
 
 # ------------------------------------------------------ #
 
