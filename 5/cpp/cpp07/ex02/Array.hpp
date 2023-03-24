@@ -45,7 +45,7 @@ class Array {
       if (idx < 0 || idx > this->_arraySize - 1) throw OutOfBounds();
       return this->_array[idx];
     }
-    
+
     unsigned int size() {
         return this->_arraySize;
     }

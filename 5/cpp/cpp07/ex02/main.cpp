@@ -7,14 +7,14 @@
 #include <iostream>
 #include <string>
 
-void leaks()
-{
-    system("leaks Array");
-}
+// void leaks()
+// {
+//     system("leaks Array");
+// }
 
 int main() {
-    atexit (leaks);
-    
+    // atexit (leaks);
+
 
     std::cout << "------  test string  ------" << std::endl;
 	Array<std::string> b(3);
