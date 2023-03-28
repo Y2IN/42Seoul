@@ -72,7 +72,7 @@ void BitcoinExchange::Bitcoin(char *file)
 	std::ifstream configfile(file);
 
 	std::string read;
-
+	getline(configfile, read);
 	while(getline(configfile, read))
 		checkInfo(read);
 }
@@ -84,7 +84,6 @@ void	BitcoinExchange::checkInfo(std::string info)
 	std::istringstream formats(info);
 	float	value;
 	int idx = 0;
-
 	while (std::getline(formats, str, ' '))
     {
         if (idx == 0)
@@ -123,17 +122,16 @@ int BitcoinExchange::checkDate(const std::string &dates)
 {
 	std::string date_split;
 	std::istringstream ss(dates);
-	// std::istringstream s1(dates);
 
 	int	year, month, day;
 	int idx = 0;
+	
 
 	if (dates.find('-', dates.length() - 1) != std::string::npos)
 	{
 		std::cout << "Error: incorrect date formate => " << dates << std::endl;
 		return 0;
 	}
-
 	while (std::getline(ss, date_split, '-'))
 	{
 		if (idx == 0)
@@ -186,7 +184,7 @@ int BitcoinExchange::checkDate(const std::string &dates)
 	if (idx != 3)
 	{
 		std::cout<<"Error : Wrong format => " << dates <<std::endl;
-			return 0;
+		return 0;
 	}
 	return 1;
 }
