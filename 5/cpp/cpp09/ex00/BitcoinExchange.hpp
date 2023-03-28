@@ -2,9 +2,13 @@
 #define BITCOINEXCHANGE_HPP
 
 #include <iostream>
+#include <iomanip>
+#include <cctype>
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <typeinfo>
+#include <cmath>
 #include <map>
 
 
@@ -22,7 +26,10 @@ class BitcoinExchange
 		void	checkInputFile(char *file);
 		void	Bitcoin(char *file);
 		void	checkInfo(std::string);
-		int		checkDate(const std::string);
+		int		checkDate(const std::string&);
+		int 	checkValue(const std::string&);
+		void	printBit(std::string date, float n);
+
 };
 
 #endif
