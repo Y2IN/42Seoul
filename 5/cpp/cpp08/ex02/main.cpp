@@ -15,7 +15,7 @@ int main() {
 
 	mstack.push(3);
 	mstack.push(5);
-	mstack.push(737); //5 3 5 737 0
+	mstack.push(737);
 	//[...]
 	mstack.push(0);
 
@@ -47,7 +47,6 @@ int main() {
 	lst.push_back(3);
 	lst.push_back(5);
 	lst.push_back(737);
-	//[...]
 	lst.push_back(0);
 
 	std::list<int>::iterator lstIter = lst.begin();
