@@ -2,15 +2,16 @@
 
 int main(int argc, char **argv)
 {
-	// BitcoinExchange bit;
+	BitcoinExchange bitcoinex;
+	// std::fstream fs;
 
 
 	if(argc != 2){
-		std::cout << "invalid arguments" << std::endl;
+		std::cout << "Error: invalid arguments" << std::endl;
 		return 0;
 	}
-	std::cout << "11" << std::endl;
+	bitcoinex.checkCsvFile();
+	bitcoinex.checkInputFile(argv[1]);
+	bitcoinex.Bitcoin(argv[1]);
 
-	// bit.init_csv();
-	// bit.Bitcoin(av[1]);
 }

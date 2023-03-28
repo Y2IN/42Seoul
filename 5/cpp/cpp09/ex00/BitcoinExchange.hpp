@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
 #include <map>
 
 
@@ -12,12 +13,16 @@ class BitcoinExchange
 {
 	private:
 		std::map<std::string, float> _data;
-		BitcoinExchange();
-		BitcoinExchange(BitcoinExchange const &);
-		BitcoinExchange & operator=(BitcoinExchange const &);
 	public:
+		BitcoinExchange(const BitcoinExchange &);
+		BitcoinExchange &operator=(BitcoinExchange const &);
+		BitcoinExchange();
 		~BitcoinExchange();
-		void	init_csv();
+		void	checkCsvFile();
+		void	checkInputFile(char *file);
+		void	Bitcoin(char *file);
+		void	checkInfo(std::string);
+		int		checkDate(const std::string);
 };
 
 #endif
