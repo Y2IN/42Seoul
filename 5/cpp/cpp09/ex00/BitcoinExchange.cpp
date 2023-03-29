@@ -101,7 +101,7 @@ void	BitcoinExchange::checkInfo(std::string info)
 		{
 			if (checkValue(str) == 0)
 				return ;
-			std::istringstream(str) >> value;
+			value = std::strtod(str.c_str(), NULL);
 			if (value > 1000)
 			{
 				std::cout << "Error: too large a number." <<std::endl;
@@ -125,7 +125,7 @@ int BitcoinExchange::checkDate(const std::string &dates)
 
 	int	year, month, day;
 	int idx = 0;
-	
+
 
 	if (dates.find('-', dates.length() - 1) != std::string::npos)
 	{
@@ -191,22 +191,34 @@ int BitcoinExchange::checkDate(const std::string &dates)
 
 int BitcoinExchange::checkValue(const std::string& str)
 {
-	if (atoi(str.c_str()) == 0 || str.find('.', 0) == 0 || str.find('.', str.length() - 1) != std::string::npos)
+  	char *ptr = NULL;
+	double value = std::strtod(str.c_str(), &ptr);
+	if (str.find('.', 0) == 0 || str.find('.', str.length() - 1) != std::string::npos)
 	{
 		std::cout << "Error: not a Number" << std::endl;
 		return 0;
 	}
-	if (str < "0")
+	if (value == 0.0 && !std::isdigit(str[0]))
+	{
+		std::cout << "Error: not a Number" << std::endl;
+		return 0;
+	}
+	if (*ptr && std::strcmp(ptr, "f"))
+	{
+		std::cout << "Error: not a Number" << std::endl;
+		return 0;
+	}
+  	if (value < 0)
 	{
 		std::cout << "Error: not a positive number." << std::endl;
 		return 0;
 	}
-	if (str.length() > 10 || (str.length() == 10 && str > "2147483647"))
+	if (str.length() > 10 || (str.length() == 10 && value > 2147483647))
 	{
 		std::cout << "Error: too large a number."<< std::endl;
 		return 0;
 	}
-	return 1;
+  	return 1;
 }
 
 void	BitcoinExchange::printBit(std::string date, float n)
@@ -216,7 +228,6 @@ void	BitcoinExchange::printBit(std::string date, float n)
 
 	res = 0;
 	iter = _data.find(date);
-	// std::cout << "iter: " << iter->first << " => " << iter->second << std::endl;
 	if (iter != _data.end())
 		res = (iter->second) * n;
 	else
