@@ -17,22 +17,18 @@ int main(int argc, char **argv) {
 		std::cerr << "Error" << std::endl;
 		return 1;
 	}
-	std::vector<int> originalData;
+	PmergeMe P;
 	int i = 1;
-	while (i < argc) {
+	while (i < argc)
+	{
 		std::string stringTmp(argv[i]);
-		std::istringstream ss(stringTmp);
-		std::string stringBuffer;
-		while (std::getline(ss, stringBuffer, ' ')) {
-		if (validateInput(stringBuffer) == false) {
-			std::cout << "[" << stringBuffer << "]" << std::endl;
+		if (validateInput(stringTmp) == false) {
 			std::cerr << "Error" << std::endl;
 			return 1;
 		}
-		std::cout << stringBuffer << std::endl;
-		originalData.push_back(static_cast<int>(strtod(stringBuffer.c_str(), NULL)));
-		}
+		// std::cout << stringTmp << std::endl;
 		++i;
 	}
+	P.Pmerge(argc, argv);
 	return 0;
 }
