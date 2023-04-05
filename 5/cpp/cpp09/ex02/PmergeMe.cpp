@@ -82,13 +82,13 @@ void PmergeMe::mergeVector(int l, int m, int r) {
 	{
 		if (left[i] <= right[j])
 		{
-		this->_vec[k] = left[i];
-		i++;
+			this->_vec[k] = left[i];
+			i++;
 		}
 		else
 		{
-		this->_vec[k] = right[j];
-		j++;
+			this->_vec[k] = right[j];
+			j++;
 		}
 		k++;
 	}
