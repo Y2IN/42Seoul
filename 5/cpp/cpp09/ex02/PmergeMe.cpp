@@ -42,7 +42,7 @@ void PmergeMe::getVectorList(int size, char **argv) {
 
 void PmergeMe::sortVector() {
 	setVectorStartTime();
-	mergeInsertionSortVector(0, this->_vec.size() - 1, this->_vec.size() / 2);
+	mergeInsertionSortVector(0, this->_vec.size() - 1, 5);
 	setVectorEndTime();
 	printVector();
 	useVectorTime();
@@ -151,7 +151,7 @@ void PmergeMe::useListTime() const {
 
 
 void PmergeMe::printVector() {
-	std::cout <<"Vector After:" ;
+	std::cout <<"After:" ;
 	for (int i = 0; i < _size; i++)
 		std::cout << " " << _vec[i];
 	std::cout << std::endl;

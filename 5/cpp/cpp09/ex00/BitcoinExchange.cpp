@@ -27,7 +27,7 @@ void BitcoinExchange::checkCsvFile(){
 	}
 	if (std::getline(csv, read).eof())
 	{
-		std::cerr << "File empty or no data in." << std::endl;
+		std::cout << "File empty or no data in." << std::endl;
 		return ;
 	}
 	while(std::getline(csv, read))

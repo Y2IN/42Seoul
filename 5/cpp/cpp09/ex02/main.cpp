@@ -12,11 +12,11 @@ bool validateInput(std::string s) {
 	return (value == static_cast<int>(value));
 }
 
-int main(int argc, char **argv) 
+int main(int argc, char **argv)
 {
 	PmergeMe P;
 	if (argc < 2) {
-		std::cerr << "Error" << std::endl;
+		std::cout << "Error" << std::endl;
 		return 1;
 	}
 	int i = 1;
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 	{
 		std::string stringTmp(argv[i]);
 		if (validateInput(stringTmp) == false) {
-			std::cerr << "Error" << std::endl;
+			std::cout << "Error" << std::endl;
 			return 1;
 		}
 		++i;
