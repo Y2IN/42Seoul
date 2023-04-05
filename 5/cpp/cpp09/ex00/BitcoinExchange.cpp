@@ -233,6 +233,11 @@ void	BitcoinExchange::printBit(std::string date, float n)
 	else
 	{
 		iter = _data.lower_bound(date);
+		if(iter == _data.begin())
+		{
+			std::cout << "Error : invalid date" << std::endl;
+			return;
+		}
 		--iter;
 		res = (iter->second) * n;
 	}
